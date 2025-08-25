@@ -1,0 +1,7 @@
+export * from '@/data/routes'
+export * from '@/data/experience'
+export * from '@/data/education'
+export * from '@/data/certification'
+export * from '@/data/projects'
+export * from '@/data/contact'
+export * from '@/data/skills'
