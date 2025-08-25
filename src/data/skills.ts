@@ -19,7 +19,7 @@ export const skills = [
             { name: 'Hibernate', icon: 'icon-[simple-icons--hibernate]' },
             { name: 'Postman', icon: 'icon-[simple-icons--postman]' },
             { name: 'PostgreSQL', icon: 'icon-[simple-icons--postgresql]' },
-            { name: 'Github', icon: 'icon-[simple-icons--github]' }, 
+            { name: 'Github', icon: 'icon-[simple-icons--github]' },
         ],
         highlight: true
     },
@@ -30,8 +30,8 @@ export const skills = [
             { name: 'salesforce', icon: 'icon-[simple-icons--salesforce]' },
             { name: 'microsoft', icon: 'icon-[simple-icons--microsoft]' },
             { name: 'javascript', icon: 'icon-[simple-icons--javascript]' },
-            { name: 'microsoftsharepoint', icon: 'icon-[simple-icons--microsoftsharepoint]' }, 
-            { name: 'cplusplus', icon: 'icon-[simple-icons--cplusplus]' }, 
+            { name: 'microsoftsharepoint', icon: 'icon-[simple-icons--microsoftsharepoint]' },
+            { name: 'cplusplus', icon: 'icon-[simple-icons--cplusplus]' },
         ],
         highlight: false
     },
@@ -42,8 +42,8 @@ export const skills = [
             { name: 'powerbi', icon: 'icon-[simple-icons--powerbi]' },
             { name: 'mysql', icon: 'icon-[simple-icons--mysql]' },
             { name: 'javascript', icon: 'icon-[simple-icons--javascript]' },
-            { name: 'microsoftsharepoint', icon: 'icon-[simple-icons--microsoftsharepoint]' }, 
-            { name: 'cplusplus', icon: 'icon-[simple-icons--cplusplus]' }, 
+            { name: 'microsoftsharepoint', icon: 'icon-[simple-icons--microsoftsharepoint]' },
+            { name: 'cplusplus', icon: 'icon-[simple-icons--cplusplus]' },
         ],
         highlight: false
     }
