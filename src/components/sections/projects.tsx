@@ -5,6 +5,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { projects } from '@/data'
 import Image from 'next/image'
 import NextLink from 'next/link'
+import { useImage } from '@/utils/imagePath'
 
 export interface ProjectsSectionProps {
     featured?: boolean
@@ -20,7 +21,7 @@ export const Projects = ({ featured }: ProjectsSectionProps) => {
                         <TooltipTrigger>View on GitHub</TooltipTrigger>
                         <TooltipContent aria-label="View on GitHub">
                             <NextLink
-                                href="https://github.com/BadEnd777"
+                                href="https://github.com/vetri15"
                                 className="flex items-center space-x-2"
                                 target="_blank"
                                 aria-label="View on GitHub"
@@ -78,7 +79,7 @@ export const Projects = ({ featured }: ProjectsSectionProps) => {
                                 </div>
                                 <div className={`px-6 ${project.isFullWidth ? 'basis-1/2 py-6 md:pr-6' : 'pb-6'}`}>
                                     <Image
-                                        src={project.image}
+                                        src={useImage(project.image)}
                                         alt={project.title}
                                         width={500}
                                         height={500}

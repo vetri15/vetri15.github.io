@@ -15,11 +15,12 @@ export const skills = [
         title: 'Backend Development',
         description: 'I have experience building and maintaining backend services, APIs, and microservices.',
         items: [
-            { name: 'Springboot', icon: 'icon-[simple-icons--springboot]' },
-            { name: 'Hibernate', icon: 'icon-[simple-icons--hibernate]' },
-            { name: 'Postman', icon: 'icon-[simple-icons--postman]' },
-            { name: 'PostgreSQL', icon: 'icon-[simple-icons--postgresql]' },
-            { name: 'Github', icon: 'icon-[simple-icons--github]' },
+            { name: 'springboot', icon: 'icon-[simple-icons--springboot]' },
+            { name: 'amazonaws', icon: 'icon-[simple-icons--amazonaws]' },
+            { name: 'hibernate', icon: 'icon-[simple-icons--hibernate]' },
+            { name: 'postman', icon: 'icon-[simple-icons--postman]' },
+            { name: 'postgreSQL', icon: 'icon-[simple-icons--postgresql]' },
+            { name: 'github', icon: 'icon-[simple-icons--github]' },
         ],
         highlight: true
     },
@@ -43,7 +44,7 @@ export const skills = [
             { name: 'mysql', icon: 'icon-[simple-icons--mysql]' },
             { name: 'javascript', icon: 'icon-[simple-icons--javascript]' },
             { name: 'microsoftsharepoint', icon: 'icon-[simple-icons--microsoftsharepoint]' },
-            { name: 'cplusplus', icon: 'icon-[simple-icons--cplusplus]' },
+            { name: 'cplusplus', icon: 'icon-[simple-icons--cplusplus]' }
         ],
         highlight: false
     }
