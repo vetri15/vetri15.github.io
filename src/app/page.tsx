@@ -6,8 +6,12 @@ import { Typography } from '@/components/typography'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import NextLink from 'next/link'
+import { useImage } from "@/utils/imagePath";
 
 const HomePage = () => {
+
+    const profileImg = useImage("/images/profile.webp");
+
     return (
         <Layout>
             <section className="flex flex-col-reverse items-center justify-between space-x-6 py-12 lg:flex-row">
@@ -39,7 +43,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <Image
-                    src="/images/profile.webp"
+                    src={profileImg}
                     alt="Profile"
                     width={500}
                     height={500}
