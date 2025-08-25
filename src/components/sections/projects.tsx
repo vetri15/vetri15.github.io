@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { projects } from '@/data'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { useImage } from '@/utils/imagePath'
+import { appendBaseUrl } from '@/utils/imagePath'
 
 export interface ProjectsSectionProps {
     featured?: boolean
@@ -79,7 +79,7 @@ export const Projects = ({ featured }: ProjectsSectionProps) => {
                                 </div>
                                 <div className={`px-6 ${project.isFullWidth ? 'basis-1/2 py-6 md:pr-6' : 'pb-6'}`}>
                                     <Image
-                                        src={useImage(project.image)}
+                                        src={appendBaseUrl(project.image)}
                                         alt={project.title}
                                         width={500}
                                         height={500}

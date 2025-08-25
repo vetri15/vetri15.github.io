@@ -6,11 +6,11 @@ import { Typography } from '@/components/typography'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { useImage } from "@/utils/imagePath";
+import { appendBaseUrl } from "@/utils/imagePath";
 
 const HomePage = () => {
 
-    const profileImg = useImage("/images/profile.webp");
+    const profileImg = appendBaseUrl("/images/profile.webp");
 
     return (
         <Layout>

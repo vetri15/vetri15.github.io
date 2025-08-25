@@ -1,6 +1,6 @@
 import { Typography } from '@/components/typography'
 import { contact } from '@/data'
-import { useImage } from '@/utils/imagePath'
+import { appendBaseUrl } from '@/utils/imagePath'
 import Image from 'next/image'
 
 export const Contact = () => {
@@ -15,7 +15,7 @@ export const Contact = () => {
                 </p>
                 <div className="flex flex-col items-center space-y-4">
                     <Image
-                        src={useImage("/images/profile.webp")}
+                        src={appendBaseUrl("/images/profile.webp")}
                         alt="Profile"
                         width={400}
                         height={400}
