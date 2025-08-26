@@ -35,7 +35,7 @@ export const DesktopNav = () => {
             <div className="flex items-center space-x-1">
                 <ModeToggle />
                 <NextLink
-                    href="https://github.com/BadEnd777/Portfolio-Website"
+                    href="https://github.com/vetri15"
                     target="_blank"
                     aria-label="GitHub repository"
                 >
