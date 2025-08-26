@@ -4,33 +4,18 @@ import { skills } from "@/data";
 import { LogoItem } from "@/types/logo";
 import { splitIntoThree } from "@/lib/arraySplitter";
 
-const logostemp = [
-  {
-    img: "/logos/logo-v-ispum-1.avif",
-  },
-  {
-    img: "/logos/logo-v-ispum-2.avif",
-  },
-  {
-    img: "/logos/logo-v-ispum-3.avif",
-  },
-  {
-    img: "/logos/logo-v-ispum-4.avif",
-  },
-  {
-    img: "/logos/logo-v-ispum-5.avif",
-  },
-  {
-    img: "/logos/logo-v-ispum-6.avif",
-  },
-  {
-    img: "/logos/logo-v-ispum-7.avif",
-  },
-];
 
+const LogoCard = ({ name, icon, group }: LogoItem) => {
 
+  const groupGradients: Record<string, string> = {
+  "Front End Development": "bg-gradient-to-r from-pink-500 via-red-500 to-orange-500", 
+  "Backend Development": "bg-gradient-to-r from-fuchsia-500 via-blue-500 to-emerald-500", // primary
+  "Data Analysis": "bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-600",
+  "CRM Development": "bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600",
+};
 
-const LogoCard = ({ name, icon }: LogoItem) => {
+const gradientClass = groupGradients[group] || "";
+
 
   return (
     // <figure
@@ -45,7 +30,8 @@ const LogoCard = ({ name, icon }: LogoItem) => {
     // </figure>
     <figure
       className={cn(
-        "relative flex items-center justify-center p-[2px] rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
+        "relative flex items-center justify-center p-[2px] rounded-xl",
+        gradientClass
       )}
     >
       <div className="flex flex-row items-center justify-center w-24 h-24 rounded-xl bg-white dark:bg-zinc-900">
@@ -58,7 +44,14 @@ const LogoCard = ({ name, icon }: LogoItem) => {
 export function VerticalMarquee() {
 
   let logos : LogoItem[] = skills.reduce((accum: LogoItem[] , i)=>{
-    return accum.concat(i.items)
+
+  const itemsWithTitle: LogoItem[] = i.items.map(item => ({
+    ...item,
+    group : i.title, // attach parent title
+  }));
+
+  return accum.concat(itemsWithTitle);
+
   },[])
 
   let logoGroups = splitIntoThree(logos);
