@@ -1,4 +1,5 @@
 import { Typography } from '@/components/typography'
+import { VerticalMarquee } from '@/components/vertical-marquee'
 import { contact } from '@/data'
 import { appendBaseUrl } from '@/utils/imagePath'
 import Image from 'next/image'
@@ -41,6 +42,7 @@ export const Contact = () => {
                     <p className="text-lg text-primary">I look forward to hearing from you!</p>
                 </div>
             </div>
+            <VerticalMarquee />
         </section>
     )
 }

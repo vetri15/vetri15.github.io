@@ -7,7 +7,7 @@ export const skills = [
             { name: 'react', icon: 'icon-[simple-icons--react]' },
             { name: 'javascript', icon: 'icon-[simple-icons--javascript]' },
             { name: 'typescript', icon: 'icon-[simple-icons--typescript]' },
-            { name: 'Tailwind CSS', icon: 'icon-[simple-icons--tailwindcss]' },
+            { name: 'tailwindcss', icon: 'icon-[simple-icons--tailwindcss]' },
         ],
         highlight: false
     },
@@ -41,10 +41,7 @@ export const skills = [
         description: 'I have experience developing CRM solutions on salesforce and microsoft dynamics',
         items: [
             { name: 'powerbi', icon: 'icon-[simple-icons--powerbi]' },
-            { name: 'mysql', icon: 'icon-[simple-icons--mysql]' },
-            { name: 'javascript', icon: 'icon-[simple-icons--javascript]' },
-            { name: 'microsoftsharepoint', icon: 'icon-[simple-icons--microsoftsharepoint]' },
-            { name: 'cplusplus', icon: 'icon-[simple-icons--cplusplus]' }
+            { name: 'mysql', icon: 'icon-[simple-icons--mysql]' }
         ],
         highlight: false
     }
