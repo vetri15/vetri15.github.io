@@ -45,14 +45,4 @@ export const skills = [
         ],
         highlight: false
     }
-    // {
-    //     title: 'Chatbot Development',
-    //     description: 'I have experience building chatbots for various platforms.',
-    //     items: [
-    //         { name: 'Discord', icon: 'icon-[simple-icons--discord]' },
-    //         { name: 'LINE', icon: 'icon-[simple-icons--line]' },
-    //         { name: 'Telegram', icon: 'icon-[simple-icons--telegram]' },
-    //         { name: 'Facebook Messenger', icon: 'icon-[simple-icons--facebook]' },
-    //     ],
-    // }
 ]

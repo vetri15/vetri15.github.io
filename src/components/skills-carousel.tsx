@@ -21,10 +21,7 @@ export const SkillsCarousel = () => {
               "h-full rounded-2xl p-[1.5px]",
               skill.highlight
                 ? "bg-gradient-to-r from-fuchsia-500 via-blue-500 to-emerald-500"
-                // neutral border when not highlighted to keep dimensions consistent
                 : "bg-border dark:bg-border"
-              // if your theme doesn't have bg-border, use:
-              // : "bg-neutral-200/60 dark:bg-neutral-800/60"
             ].join(" ")}
           >
             <Card className="flex h-full flex-col rounded-2xl border-0 bg-background shimmer">

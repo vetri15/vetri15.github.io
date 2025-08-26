@@ -18,16 +18,6 @@ const gradientClass = groupGradients[group] || "";
 
 
   return (
-    // <figure
-    //   className={cn(
-    //     "flex relative w-28 cursor-pointer items-center justify-center"
-    //   )}
-    // >
-    //   <div className="flex flex-row items-center justify-center my-4">
-    //     {/* <img width={50} alt="" src={img} /> */}
-    //     <span key={name} className={`${icon} size-6`} />
-    //   </div>
-    // </figure>
     <figure
       className={cn(
         "relative flex items-center justify-center p-[2px] rounded-xl",
