@@ -7,7 +7,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useTheme } from 'next-themes'
 
 export const ModeToggle = () => {
-    const { theme, setTheme } = useTheme()
+    const { theme, setTheme } = useTheme();
 
     return (
         <Popover>
