@@ -5,13 +5,8 @@ export const contact = [
         link: 'https://x.com/Vetri_TQ',
     },
     {
-        icon: 'icon-[tabler--brand-threads]',
-        label: 'Threads',
-        link: 'https://www.threads.net/@pyyupsk_',
-    },
-    {
-        icon: 'icon-[tabler--brand-mailgun]',
-        label: 'Email',
-        link: 'mailto:badend777@proton.me',
+        icon: 'icon-[tabler--brand-discord-filled]',
+        label: 'Discord',
+        link: 'https://discord.com/users/793510193869619231',
     },
 ]
