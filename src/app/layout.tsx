@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         siteName: title,
         images: [
             {
-                url: OPEN_GRAPH_IMAGE, // or an array of images
+                url: appendBaseUrl(OPEN_GRAPH_IMAGE), // or an array of images
                 width: 800,
                 height: 600,
             },

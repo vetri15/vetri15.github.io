@@ -3,10 +3,11 @@ import { Blog } from '@/components/sections/blog'
 import { OPEN_GRAPH_IMAGE } from '@/config'
 import { getBlogList } from '@/lib/blog'
 import type { Metadata } from 'next'
+import { appendBaseUrl } from '@/utils/imagePath'
 
 const title = 'Blog'
 const description =
-    'Explore a collection of articles and blog posts by BadEnd. Discover a variety of topics, ranging from web development to design and technology.'
+    'Explore a collection of articles and blog posts by Vetri. Discover a variety of topics, ranging from Java to AI'
 
 export const metadata: Metadata = {
     title,
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
         description,
         images: [
             {
-                url: OPEN_GRAPH_IMAGE,
+                url: appendBaseUrl(OPEN_GRAPH_IMAGE),
                 width: 800,
                 height: 600,
             },
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     twitter: {
         title,
         description,
-        images: [OPEN_GRAPH_IMAGE],
+        images: [appendBaseUrl(OPEN_GRAPH_IMAGE)],
     },
 }
 

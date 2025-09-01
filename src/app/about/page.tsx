@@ -2,6 +2,7 @@ import { Layout } from '@/components/layout'
 import { About } from '@/components/sections/about'
 import { OPEN_GRAPH_IMAGE } from '@/config'
 import type { Metadata } from 'next'
+import { appendBaseUrl } from '@/utils/imagePath'
 
 const title = 'About Me'
 const description =
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
         description,
         images: [
             {
-                url: OPEN_GRAPH_IMAGE,
+                url: appendBaseUrl(OPEN_GRAPH_IMAGE),
                 width: 800,
                 height: 600,
             },
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     twitter: {
         title,
         description,
-        images: [OPEN_GRAPH_IMAGE],
+        images: [appendBaseUrl(OPEN_GRAPH_IMAGE)],
     },
 }
 

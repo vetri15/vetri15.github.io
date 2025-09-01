@@ -10,6 +10,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
+import { appendBaseUrl } from '@/utils/imagePath'
 
 interface BlogPostPageProps {
     params: {
@@ -28,9 +29,9 @@ export const generateMetadata = async ({ params }: BlogPostPageProps): Promise<M
 
     const isExternal = !preview.startsWith('/images/blog/')
 
-    const image = isExternal ? preview : `${BASE_URL}${preview}`
+    const image = appendBaseUrl(isExternal ? preview : `${BASE_URL}${preview}`)
 
-    const title = `BadEnd Blog - ${metaTitle}`
+    const title = `Vetri's Blog - ${metaTitle}`
 
     return {
         title: {

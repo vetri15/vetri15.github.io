@@ -5,6 +5,7 @@ import { getBlogList, getBlogTags } from '@/lib/blog'
 import { capitalize } from '@/utils/capitalize'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { appendBaseUrl } from '@/utils/imagePath'
 
 interface BlogTagPageProps {
     params: {
@@ -21,8 +22,8 @@ export const generateMetadata = async ({ params }: BlogTagPageProps): Promise<Me
 
     const capita = capitalize(tag)
 
-    const title = `BadEnd Blog - ${capita}`
-    const description = `Explore a collection of articles and blog posts with tag ${capita} by BadEnd. Discover more ${capita} related blogs.`
+    const title = `Vetri's Blog - ${capita}`
+    const description = `Explore a collection of articles and blog posts from vetri`
 
     return {
         title: {
@@ -36,7 +37,7 @@ export const generateMetadata = async ({ params }: BlogTagPageProps): Promise<Me
             description,
             images: [
                 {
-                    url: OPEN_GRAPH_IMAGE,
+                    url: appendBaseUrl(OPEN_GRAPH_IMAGE),
                     width: 800,
                     height: 600,
                 },
@@ -47,7 +48,7 @@ export const generateMetadata = async ({ params }: BlogTagPageProps): Promise<Me
                 absolute: title,
             },
             description,
-            images: [OPEN_GRAPH_IMAGE],
+            images: [appendBaseUrl(OPEN_GRAPH_IMAGE)],
         },
     }
 }
