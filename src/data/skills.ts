@@ -21,6 +21,7 @@ export const skills = [
             { name: 'postman', icon: 'icon-[simple-icons--postman]' },
             { name: 'postgreSQL', icon: 'icon-[simple-icons--postgresql]' },
             { name: 'github', icon: 'icon-[simple-icons--github]' },
+            { name: 'intellijidea', icon: 'icon-[simple-icons--intellijidea]' }
         ],
         highlight: true
     },

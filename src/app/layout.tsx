@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
 import '@/styles/globals.css'
+import { appendBaseUrl } from '@/utils/imagePath'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,12 +26,12 @@ export const metadata: Metadata = {
         },
     ],
     icons: {
-        icon: '/favicon.ico',
-        shortcut: '/favicon.ico',
-        apple: '/apple-touch-icon.png',
+        icon: appendBaseUrl('/favicon.ico'),
+        shortcut: appendBaseUrl('/favicon.ico'),
+        apple: appendBaseUrl('/apple-touch-icon.png'),
         other: {
-            rel: 'apple-chrome-512x512',
-            url: '/android-chrome-512x512.png',
+            rel: appendBaseUrl('apple-chrome-512x512'),
+            url: appendBaseUrl('/android-chrome-512x512.png'),
         },
     },
     metadataBase: new URL(url),
