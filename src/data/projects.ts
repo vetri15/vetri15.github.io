@@ -30,7 +30,7 @@ export const projects = [
         title: 'Buy me Coffee',
         description:
             'A decentralized Buy Me a Coffee app built with Next.js, Hardhat, and Solidity, enabling seamless crypto donations. It lets users support creators directly on-chain with secure and transparent transactions.',
-        image: '/images/projects/buy-me-coffee.webp',
+        image: '/images/projects/buy-me-coffee.png',
         status: {
             text: 'View Source',
             link: 'https://github.com/vetri15/buy-me-coffee',
