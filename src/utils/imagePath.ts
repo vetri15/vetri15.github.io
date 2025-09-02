@@ -1,3 +1,5 @@
 export function appendBaseUrl(path: string): string {
-   return `${process.env.NODE_ENV === "production" ? "/Personal-Website" : ""}${path}`;
+   const isProd = process.env.NODE_ENV === "production";
+   const isVercel = !!process.env.VERCEL;
+   return `${ (isProd && !isVercel) ? "/Personal-Website" : ""}${path}`;
 }
