@@ -16,6 +16,8 @@ Have you ever wished for a smart YouTube assistant that runs locally, understand
 -   [Prerequisites](#Prerequisites)
 -   [Walkthrough](#Walkthrough)
 
+---
+
 ## Overview
 
 The following steps happen in sequence once the user inputs his YouTube link and the question.
@@ -26,106 +28,60 @@ The following steps happen in sequence once the user inputs his YouTube link and
 -   The relevant chunks and the question are sent to the locally running LLM.
 -   The LLM does its magic✨ and gives the output to the user.
 
-<!-- **1. Folder Structure**
-
-In smaller React.js projects, simplicity is key. Consider the following folder structure:
-
-```bash:Folder-Structure
-src/
-├── components/
-├── pages/
-├── utils/
-├── App.js
-└── index.js
-```
-
--   **components**: Store your reusable UI components here.
--   **pages**: Define your main application pages.
--   **utils**: Place utility functions and helper modules here.
--   **App.js**: The main application entry point.
--   **index.js**: The entry point of your application.
-
-**2. Component Organization**
-
-Keep your components organized by functionality. For example, if you have a "Header" component, place it in the `components` folder. Use self-contained components that are easy to understand and maintain.
-
-**3. State Management**
-
-For smaller projects, you can manage state using React's built-in state or `useState` hook. Avoid overcomplicating things with external state management libraries like Redux. -->
+---
 
 ## Prerequisites
 
 To run this project you need 2 things apart from the GitHub repo.
 
 **1. Pinecone API key**
-You can sign up for a free API key using this link
 
-As your project grows, consider a more modular structure:
+You can sign up for a free API key using this link [Pinecone DB](https://www.pinecone.io/)
 
-```bash:Folder-Structure
-src/
-├── components/
-│   ├── Button/
-│   ├── Header/
-│   └── ...
-├── containers/
-├── pages/
-├── services/
-├── utils/
-├── App.js
-└── index.js
+**2. A local running LLM**
+
+For this we use Ollama, It is an open-source tool that allows users to easily run large language models (LLMs) locally on their computers.
+You can download ollama using the [link⬇️](https://ollama.com/download/OllamaSetup.exe). To learn more about ollama visit the GitHub [link](https://github.com/ollama/ollama)
+
+---
+
+## Walkthrough
+
+Once you have got the API key and installed ollama, go through the below steps.
+
+1. Clone the [GitHub repo](https://github.com/vetri15/langchain_demo) and install node packages.
+
+```bash
+git clone https://github.com/vetri15/langchain_demo
+cd langchain_demo
+npm install
 ```
 
--   **components**: Split components into folders by feature.
--   **containers**: Place container components here for managing data and interactions.
--   **services**: Add API services and external integrations here.
+2. Rename the .env.example file and set up your environment variables.
 
-**2. State Management**
-
-For mid-size projects, consider using a state management library like Redux or Mobx. Centralize your application state for better scalability and data management.
-
-**3. Code Splitting**
-
-Leverage code splitting to load only the necessary code for each route, improving performance. React Router offers easy integration with code splitting.
-
-## Overview
-
-**1. Folder Structure**
-
-In large-scale React.js projects, a more organized structure is essential for maintainability:
-
-```bash:Folder-Structure
-src/
-├── assets/
-├── components/
-│   ├── Button/
-│   ├── Header/
-│   └── ...
-├── containers/
-├── layouts/
-├── pages/
-│   ├── Home/
-│   ├── Dashboard/
-│   └── ...
-├── services/
-├── state/
-├── utils/
-├── App.js
-└── index.js
+```bash
+Rename-Item -Path .env.example -NewName .env
+Set-Content .env 'PINECONE_API_KEY=your-api-key'
 ```
 
--   **assets**: Store static assets like images and fonts here.
--   **layouts**: Define layouts for different sections of your app.
--   **state**: Use a modular approach to state management. Each module handles its own state, actions, and reducers.
+3. next run your local LLM using ollama. we will use the [deepseek-r1 model](https://ollama.com/library/deepseek-r1).
+There are various parameters available, the higher the parameters the better. I could run up to 14B parameter model using my Nvidia RTX 2050 Mobile GPU paired with my Ryzen 7 processor. You may choose between 8B, 14B, and 32B models based on your PC.
+The below code will download and run the corresponding ollama model. Ollama will take some time to install. since DeepSeek models are a few GBs.
 
-**2. Routing**
+```bash
+ollama run deepseek-r1:14b
+```
 
-Implement a robust routing system using React Router to manage complex navigation in large apps. Create nested routes for better organization.
+4. Once Deepseek is running. run the node.js application using the below code.
 
-**3. Testing and Documentation**
+```bash
+node index.js
+```
 
-Invest in thorough testing and documentation to ensure code quality and make it easier for your team to collaborate on a large-scale project.
+5. Now paste the [YouTube link](https://www.youtube.com/watch?v=JKBk_Kfucs4) and ask questions about the video.
 
-## Conclusion
+---
 
-By adhering to these best practices and tips, you can efficiently structure your React.js projects, ensuring they remain maintainable and scalable as they grow. Tailor your project structure to its size and complexity, and always aim for clean, organized code that promotes collaboration among your development team.
+Voila! You now have a locally running YouTube assistant.
+
+If you have any queries, feel free to comment.☺️
