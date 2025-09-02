@@ -5,4 +5,4 @@ const env = guardEnv(process.env, {
 })
 
 export const BASE_URL = env.NEXT_PUBLIC_BASE_URL as string
-export const OPEN_GRAPH_IMAGE = `${BASE_URL}/images/open-graph.webp`
+export const OPEN_GRAPH_IMAGE = `${BASE_URL}/images/open-graph.png`
