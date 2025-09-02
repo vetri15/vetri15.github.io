@@ -20,10 +20,7 @@ export type BlogFrontmatter = {
     date: string
 }
 
-function addDot(imagePath: string): string {
-    const isGithub = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "github"
-    return isGithub ? '.'+imagePath : imagePath
-}
+
 
 export type BlogData = {
     slug: string
@@ -58,10 +55,7 @@ export const getBlogData = async (slug: string): Promise<BlogData | null> => {
 
     return {
         slug,
-        metadata: {
-            ...frontmatter,
-            image: addDot(frontmatter.image)
-        },
+        metadata: frontmatter,
         content: file.toString(),
     }
 }

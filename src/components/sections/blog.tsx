@@ -20,6 +20,11 @@ export const Blog = ({ blogs, tag }: BlogSectionProps) => {
     const heading = tag ? `📝 Blog: ${tag}` : '📝 Blog'
     const articleCount = `${blogs.length} article${blogs.length > 1 && 's'}`
 
+    function addDot(imagePath: string): string {
+        const isGithub = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "github"
+        return isGithub ? '.'+imagePath : imagePath
+    }
+
     return (
         <section className="flex flex-col space-y-8 pb-20 pt-4">
             <div className="flex items-center justify-between border-b pb-4">
@@ -29,7 +34,8 @@ export const Blog = ({ blogs, tag }: BlogSectionProps) => {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {blogs.map((blog) => {
                     const { slug, metadata } = blog
-                    const { title, description, tags, image, date } = metadata
+                    let { title, description, tags, image, date } = metadata
+                    image = addDot(image)
 
                     return (
                         <Card key={slug} className="flex flex-col">
