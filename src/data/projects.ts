@@ -14,14 +14,15 @@ isFullWidth: true - Make the project image full width.
 
 export const projects = [
     {
-        title: 'Personal Website',
-        description: 'My personal ',
-        image: '/images/projects/personal-website.webp',
+        title: 'Youtube assistant',
+        description: 'Building a smart local YouTube assistant using LangChain, Pinecone, and Ollama-powered LLMs. It helps process, index, and query video content efficiently, enabling fast, AI-driven insights from YouTube video.',
+        image: '/images/projects/youtube-llm.png',
         status: {
             text: 'View Source',
-            link: 'https://github.com/BadEnd777/Personal-Website',
+            link: 'https://github.com/vetri15/langchain_demo',
             icon: 'icon-[tabler--arrow-right]',
         },
+        note: 'AI',
         isFeatured: true,
         isFullWidth: true,
     },
@@ -37,5 +38,6 @@ export const projects = [
         },
         note: 'Block chain',
         isFeatured: true,
+        isFullWidth: true
     }
 ]
