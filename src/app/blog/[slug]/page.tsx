@@ -71,7 +71,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
 
     function addDoubleDot(imagePath: string): string {
         const isGithub = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "github"
-        return isGithub ? '.' + imagePath : imagePath
+        return isGithub ? '..' + imagePath : imagePath
     }
 
     const { metadata, content } = blog
