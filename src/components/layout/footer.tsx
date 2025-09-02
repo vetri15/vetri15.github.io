@@ -8,11 +8,11 @@ export const Footer = () => {
         <footer className="w-full border-t bg-background">
             <div className="container flex h-full flex-col items-center justify-between space-y-2 py-4 md:flex-row md:space-y-0">
                 <div className="flex flex-col items-center space-y-2 md:items-start">
-                    <p>&copy; {date} BadEnd, All Rights Reserved</p>
+                    <p>&copy; {date} Vetri T</p>
                     <p>
-                        This website is open source.{' '}
+                        {' '}
                         <NextLink
-                            href="https://github.com/BadEnd777/Portfolio-Website"
+                            href="https://github.com/vetri15"
                             target="_blank"
                             className="link"
                             aria-label="GitHub repository"

@@ -69,6 +69,11 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
         return notFound()
     }
 
+    function addDoubleDot(imagePath: string): string {
+        const isGithub = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "github"
+        return isGithub ? '.' + imagePath : imagePath
+    }
+
     const { metadata, content } = blog
     const { title, description, tags, image, date } = metadata
 
@@ -93,7 +98,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
                 <p className="text-sm text-muted-foreground">{dayjs(date).format('MMMM D, YYYY')}</p>
                 <Typography variant="h1">{title}</Typography>
                 <p>{description}</p>
-                <Image src={image} width={500} height={500} className="h-full w-full rounded" alt={title} />
+                <Image src={addDoubleDot(image)} width={500} height={500} className="h-full w-full rounded" alt={title} />
                 <div dangerouslySetInnerHTML={{ __html: content }} />
             </article>
         </Layout>
