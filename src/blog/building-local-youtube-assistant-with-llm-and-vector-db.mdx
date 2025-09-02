@@ -2,23 +2,31 @@
 title: Building a Local YouTube Assistant with LLM and Vector Databases
 description: Learn how to build a smart local YouTube assistant using LangChain, Pinecone, and Ollama-powered LLMs.
 tags: [YouTube, LangChain, LLM, Pinecone, Ollama, AI, Node.js]
-image: /images/blog/youtube-llm.jpg
+image: /images/blog/youtube-llm.png
 date: 2023-03-22
 ---
 
-When it comes to building web applications with React.js, the way you structure your project can significantly impact its maintainability and scalability. In this blog post, we will delve into best practices and tips for structuring React.js projects, tailored to different project sizes – smaller, mid-size, and large-scale. To provide clarity, we'll accompany our recommendations with code blocks that illustrate the differences.
+Have you ever wished for a smart YouTube assistant that runs locally, understands your queries, and fetches the right insights instantly? Well, you’re in the right place! 🚀
 
-> **Note**: This article applies to Next.js projects as well, since Next.js is built on top of React.js and uses a similar folder structure, the only difference is that \_app.js in Next.js is App.js in React.js and there added \_document.js files in Next.js.
+> **Note**: This blog assumes you know basic JavaScript. The required code is in the associated [GitHub repo](https://github.com/vetri15/langchain_demo).
 
 ## Table of Contents
 
--   [Smaller Projects](#smaller-projects)
--   [Mid-Size Projects](#mid-size-projects)
--   [Large-Scale Projects](#large-scale-projects)
+-   [Overview](#Overview)
+-   [Prerequisites](#Prerequisites)
+-   [Walkthrough](#Walkthrough)
 
-## Smaller Projects
+## Overview
 
-**1. Folder Structure**
+The following steps happen in sequence once the user inputs his YouTube link and the question.
+
+-   The YouTube transcript is fetched using the Langchain library.
+-   The fetched transcript is broken into text chunks and indexed in Pinecone DB.
+-   From the Pinecone DB, the chunks relevant to the question are retrieved.
+-   The relevant chunks and the question are sent to the locally running LLM.
+-   The LLM does its magic✨ and gives the output to the user.
+
+<!-- **1. Folder Structure**
 
 In smaller React.js projects, simplicity is key. Consider the following folder structure:
 
@@ -43,11 +51,14 @@ Keep your components organized by functionality. For example, if you have a "Hea
 
 **3. State Management**
 
-For smaller projects, you can manage state using React's built-in state or `useState` hook. Avoid overcomplicating things with external state management libraries like Redux.
+For smaller projects, you can manage state using React's built-in state or `useState` hook. Avoid overcomplicating things with external state management libraries like Redux. -->
 
-## Mid-Size Projects
+## Prerequisites
 
-**1. Folder Structure**
+To run this project you need 2 things apart from the GitHub repo.
+
+**1. Pinecone API key**
+You can sign up for a free API key using this link
 
 As your project grows, consider a more modular structure:
 
@@ -77,7 +88,7 @@ For mid-size projects, consider using a state management library like Redux or M
 
 Leverage code splitting to load only the necessary code for each route, improving performance. React Router offers easy integration with code splitting.
 
-## Large-Scale Projects
+## Overview
 
 **1. Folder Structure**
 
