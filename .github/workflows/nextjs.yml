@@ -72,6 +72,7 @@ jobs:
           ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
           NEXT_PUBLIC_BASE_URL: https://vetri15.github.io/Personal-Website
+          NEXT_PUBLIC_DEPLOY_TARGET: github
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
