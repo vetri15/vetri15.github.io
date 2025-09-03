@@ -1,17 +1,5 @@
 export const skills = [
     {
-        title: 'Front End Development',
-        description: 'I have experience building web applications using modern technologies and frameworks.',
-        items: [
-            { name: 'next.js', icon: 'icon-[simple-icons--nextdotjs]' },
-            { name: 'react', icon: 'icon-[simple-icons--react]' },
-            { name: 'javascript', icon: 'icon-[simple-icons--javascript]' },
-            { name: 'typescript', icon: 'icon-[simple-icons--typescript]' },
-            { name: 'tailwindcss', icon: 'icon-[simple-icons--tailwindcss]' },
-        ],
-        highlight: false
-    },
-    {
         title: 'Backend Development',
         description: 'I have experience building and maintaining backend services, APIs, and microservices.',
         items: [
@@ -24,6 +12,18 @@ export const skills = [
             { name: 'intellijidea', icon: 'icon-[simple-icons--intellijidea]' }
         ],
         highlight: true
+    },
+    {
+        title: 'Front End Development',
+        description: 'I have experience building web applications using modern technologies and frameworks.',
+        items: [
+            { name: 'next.js', icon: 'icon-[simple-icons--nextdotjs]' },
+            { name: 'react', icon: 'icon-[simple-icons--react]' },
+            { name: 'javascript', icon: 'icon-[simple-icons--javascript]' },
+            { name: 'typescript', icon: 'icon-[simple-icons--typescript]' },
+            { name: 'tailwindcss', icon: 'icon-[simple-icons--tailwindcss]' },
+        ],
+        highlight: false
     },
     {
         title: 'CRM Development',
