@@ -41,9 +41,9 @@ export const Projects = ({ featured }: ProjectsSectionProps) => {
                 {projects
                     .filter((project) => (featured ? project.isFeatured : true))
                     .map((project) => (
-                        <FadeInSection>
+                        <FadeInSection key={project.title}>
                         <Card
-                            key={project.title}
+                            
                             className={project.isFullWidth ? 'w-full' : 'md:basis-[calc(50%-0.5rem)]'}
                         >
                             <div
