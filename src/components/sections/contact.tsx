@@ -3,6 +3,7 @@ import { VerticalMarquee } from '@/components/vertical-marquee'
 import { contact } from '@/data'
 import { appendBaseUrl } from '@/utils/imagePath'
 import Image from 'next/image'
+import FadeInSection from '../fade-in-section'
 
 export const Contact = () => {
     return (
@@ -42,7 +43,9 @@ export const Contact = () => {
                     <p className="text-lg text-primary">I look forward to hearing from you!</p>
                 </div>
             </div>
+            <FadeInSection>
             <VerticalMarquee />
+            </FadeInSection>
         </section>
     )
 }

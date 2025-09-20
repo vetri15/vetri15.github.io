@@ -6,6 +6,7 @@ import { projects } from '@/data'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { appendBaseUrl } from '@/utils/imagePath'
+import FadeInSection from '../fade-in-section'
 
 export interface ProjectsSectionProps {
     featured?: boolean
@@ -40,6 +41,7 @@ export const Projects = ({ featured }: ProjectsSectionProps) => {
                 {projects
                     .filter((project) => (featured ? project.isFeatured : true))
                     .map((project) => (
+                        <FadeInSection>
                         <Card
                             key={project.title}
                             className={project.isFullWidth ? 'w-full' : 'md:basis-[calc(50%-0.5rem)]'}
@@ -89,6 +91,7 @@ export const Projects = ({ featured }: ProjectsSectionProps) => {
                                 </div>
                             </div>
                         </Card>
+                        </FadeInSection>
                     ))}
             </div>
         </section>

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { appendBaseUrl } from "@/utils/imagePath";
+import FadeInSection from '@/components/fade-in-section'
 
 const HomePage = () => {
 
@@ -14,6 +15,7 @@ const HomePage = () => {
 
     return (
         <Layout>
+            <FadeInSection>
             <section className="flex flex-col-reverse items-center justify-between space-x-6 py-12 lg:flex-row">
                 <div className="flex flex-col items-center space-y-6 text-center lg:items-start lg:text-left">
                     <div className="flex items-baseline space-x-1 space-y-6 lg:flex-col lg:space-x-0">
@@ -51,9 +53,16 @@ const HomePage = () => {
                     priority
                 />
             </section>
+            </FadeInSection>
+            <FadeInSection>
             <About />
+            </FadeInSection>
+            <FadeInSection>
             <Projects featured />
+            </FadeInSection>
+            <FadeInSection>
             <Contact />
+            </FadeInSection>
         </Layout>
     )
 }
