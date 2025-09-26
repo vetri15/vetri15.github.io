@@ -5,8 +5,8 @@ const isVercel = !!process.env.VERCEL;
 
 const nextConfig = {
     output: 'export',
-    basePath: (isProd && !isVercel) ? "/Personal-Website" : "",
-    assetPrefix: (isProd && !isVercel) ? "/Personal-Website/" : "",
+    basePath: (isProd && !isVercel) ? "" : "",
+    assetPrefix: (isProd && !isVercel) ? "" : "",
     images: { unoptimized: true },
 }
 
