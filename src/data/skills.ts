@@ -39,7 +39,7 @@ export const skills = [
     },
     {
         title: 'Data Analysis',
-        description: 'I have experience developing CRM solutions on salesforce and microsoft dynamics.',
+        description: 'I have experience developing CRM solutions on salesforce and microsoft dynamics',
         items: [
             { name: 'powerbi', icon: 'icon-[simple-icons--powerbi]' },
             { name: 'mysql', icon: 'icon-[simple-icons--mysql]' }
