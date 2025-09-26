@@ -1,7 +1,7 @@
 export const contact = [
     {
         icon: 'icon-[tabler--brand-x]',
-        label: 'X (formerly twitter)',
+        label: 'X.com',
         link: 'https://x.com/Vetri_TQ',
     },
     {
