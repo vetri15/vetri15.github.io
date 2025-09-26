@@ -9,7 +9,7 @@ on:
   push:
     branches: ["main"]
 env:
-  NEXT_PUBLIC_BASE_URL: https://vetri15.github.io/Personal-Website
+  NEXT_PUBLIC_BASE_URL: https://vetri15.github.io
   NEXT_PUBLIC_DEPLOY_TARGET: github
 
   # Allows you to run this workflow manually from the Actions tab
