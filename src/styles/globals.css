@@ -488,3 +488,16 @@ pre[class*='language-'] {
     opacity: 0.8;
 }
 
+@keyframes shimmer {
+  0% { background-position: -300% 0; }
+  50% { background-position: 300% 0; }
+  100% { background-position: -300% 0; }
+}
+
+.animate-shimmer {
+  background-size: 400% 100%;
+  animation: shimmer 30s linear infinite;
+}
+
+
+

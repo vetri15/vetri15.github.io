@@ -4,6 +4,7 @@ import { Contact } from '@/components/sections/contact'
 import { Projects } from '@/components/sections/projects'
 import { Typography } from '@/components/typography'
 import { Button } from '@/components/ui/button'
+import { LinkDock } from '@/components/link-dock'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { appendBaseUrl } from "@/utils/imagePath";
@@ -63,6 +64,7 @@ const HomePage = () => {
             <FadeInSection>
             <Contact />
             </FadeInSection>
+            <LinkDock />
         </Layout>
     )
 }
