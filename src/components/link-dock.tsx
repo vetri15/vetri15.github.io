@@ -11,7 +11,8 @@ export const LinkDock = () => {
                 <div className="rounded-full bg-white dark:bg-black  flex items-center space-x-6 px-4 py-3 shadow-lg">
                     {
                         docks.map((dock) => (
-                            <a href={dock.link}
+                            <a  key={dock.link}
+                                href={dock.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center text-2xl hover:text-primary transition-colors">
