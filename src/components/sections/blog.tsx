@@ -18,7 +18,7 @@ export interface BlogSectionProps {
 
 export const Blog = ({ blogs, tag }: BlogSectionProps) => {
     const heading = tag ? `📝 Blog: ${tag}` : '📝 Blog'
-    const articleCount = `${blogs.length} article${blogs.length > 1 && 's'}`
+    const articleCount = `${blogs.length} article${ (blogs.length > 1) ? 's' : ''}`
 
     function addDot(imagePath: string): string {
         const isGithub = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "github"
