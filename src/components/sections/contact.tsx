@@ -5,9 +5,13 @@ import { appendBaseUrl } from '@/utils/imagePath'
 import Image from 'next/image'
 import FadeInSection from '../fade-in-section'
 
-export const Contact = () => {
+interface ContactProps {
+    id?: string
+}
+
+export const Contact = ({ id }: ContactProps) => {
     return (
-        <section className="flex flex-col space-y-8 pb-20 pt-4">
+        <section id={id} className="flex flex-col space-y-8 pb-20 pt-4">
             <Typography variant="h2" underline>
                 📫 Let&apos;s Connect
             </Typography>

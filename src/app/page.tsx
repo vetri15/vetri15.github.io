@@ -56,13 +56,13 @@ const HomePage = () => {
             </section>
             </FadeInSection>
             <FadeInSection>
-            <About />
+            <About id="about" />
             </FadeInSection>
             <FadeInSection>
-            <Projects featured />
+            <Projects id="projects" featured />
             </FadeInSection>
             <FadeInSection>
-            <Contact />
+            <Contact id="contact" />
             </FadeInSection>
             <LinkDock />
         </Layout>

@@ -10,11 +10,12 @@ import FadeInSection from '../fade-in-section'
 
 export interface ProjectsSectionProps {
     featured?: boolean
+    id?: string
 }
 
-export const Projects = ({ featured }: ProjectsSectionProps) => {
+export const Projects = ({ featured, id }: ProjectsSectionProps) => {
     return (
-        <section className="flex flex-col space-y-8 py-4">
+        <section id={id} className="flex flex-col space-y-8 py-4">
             <div className="flex items-center justify-between border-b pb-4">
                 <Typography variant="h1">🚀 {featured && 'Featured '}Projects</Typography>
                 <TooltipProvider>

@@ -1,12 +1,16 @@
 import { SkillsCarousel } from '@/components/skills-carousel'
 import { Typography } from '@/components/typography'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
+import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { certification, education, experience } from '@/data'
 import FadeInSection from '../fade-in-section'
 
-export const About = () => {
+interface AboutProps {
+    id?: string
+}
+
+export const About = ({ id }: AboutProps) => {
     return (
-        <section className="flex flex-col space-y-8 py-4">
+        <section id={id} className="flex flex-col space-y-8 py-4">
             <FadeInSection>
             <Typography variant="h1" underline>
                 📝 About Me
