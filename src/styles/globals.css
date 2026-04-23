@@ -494,9 +494,47 @@ pre[class*='language-'] {
   100% { background-position: -300% 0; }
 }
 
+@keyframes title-shimmer {
+    0%,
+    100% {
+        background-position: 150% center;
+        filter: drop-shadow(0 0 0.3rem hsl(var(--foreground) / 0.1));
+    }
+    50% {
+        background-position: -40% center;
+        filter: drop-shadow(0 0 0.45rem hsl(var(--foreground) / 0.14));
+    }
+}
+
 .animate-shimmer {
   background-size: 400% 100%;
   animation: shimmer 30s linear infinite;
+}
+
+.title-highlight {
+    display: inline-block;
+    color: hsl(var(--foreground));
+    background-image: linear-gradient(
+        120deg,
+        hsl(var(--foreground)) 0%,
+        hsl(var(--foreground)) 42%,
+        hsl(var(--foreground) / 0.55) 50%,
+        hsl(var(--foreground)) 58%,
+        hsl(var(--foreground)) 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: title-shimmer 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .title-highlight {
+        animation: none;
+        background-position: 50% center;
+        filter: none;
+    }
 }
 
 .nav-link {

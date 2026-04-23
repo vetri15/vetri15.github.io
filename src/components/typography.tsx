@@ -1,4 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react'
+import { cn } from '@/lib/utils'
 
 interface TypographyProps extends HTMLAttributes<HTMLHeadingElement> {
     variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
@@ -16,18 +17,25 @@ const variants = {
     h6: 'text-sm font-semibold leading-none tracking-tight',
 }
 
-export const Typography = ({ variant, underline, classes, children }: TypographyProps) => {
+export const Typography = ({
+    variant,
+    underline,
+    classes,
+    className,
+    children,
+    ...props
+}: TypographyProps) => {
     const isUnderlined = underline ? 'border-b pb-4' : ''
 
-    const combinedClasses = `scroll-m-20 tracking-tight ${variants[variant]} ${isUnderlined} ${classes || ''}`
+    const combinedClasses = cn('scroll-m-20 tracking-tight', variants[variant], isUnderlined, classes, className)
 
     const component = {
-        h1: <h1 className={combinedClasses}>{children}</h1>,
-        h2: <h2 className={combinedClasses}>{children}</h2>,
-        h3: <h3 className={combinedClasses}>{children}</h3>,
-        h4: <h4 className={combinedClasses}>{children}</h4>,
-        h5: <h5 className={combinedClasses}>{children}</h5>,
-        h6: <h6 className={combinedClasses}>{children}</h6>,
+        h1: <h1 className={combinedClasses} {...props}>{children}</h1>,
+        h2: <h2 className={combinedClasses} {...props}>{children}</h2>,
+        h3: <h3 className={combinedClasses} {...props}>{children}</h3>,
+        h4: <h4 className={combinedClasses} {...props}>{children}</h4>,
+        h5: <h5 className={combinedClasses} {...props}>{children}</h5>,
+        h6: <h6 className={combinedClasses} {...props}>{children}</h6>,
     }
 
     return component[variant]
