@@ -90,7 +90,7 @@ export const DesktopNav = () => {
                     <NextLink
                         key={route.path}
                         href={route.path}
-                        className={`${isActive(route.path) && 'text-primary'}`}
+                        className={`nav-link ${isActive(route.path) ? 'nav-link-active text-primary' : ''}`}
                     >
                         {route.label}
                     </NextLink>

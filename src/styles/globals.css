@@ -499,5 +499,33 @@ pre[class*='language-'] {
   animation: shimmer 30s linear infinite;
 }
 
+.nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 0.35rem;
+    transition: color 160ms ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: hsl(var(--primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 180ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.nav-link-active::after {
+    transform: scaleX(1);
+}
+
 
 
