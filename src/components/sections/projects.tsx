@@ -1,7 +1,6 @@
 import { Typography } from '@/components/typography'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { projects } from '@/data'
 import Image from 'next/image'
 import NextLink from 'next/link'
@@ -21,22 +20,15 @@ export const Projects = ({ featured, id }: ProjectsSectionProps) => {
                     <span className="title-highlight-emoji" aria-hidden="true">🚀</span>
                     {featured && 'Featured '}Projects
                 </Typography>
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger>View on GitHub</TooltipTrigger>
-                        <TooltipContent aria-label="View on GitHub">
-                            <NextLink
-                                href="https://github.com/vetri15"
-                                className="flex items-center space-x-2"
-                                target="_blank"
-                                aria-label="View on GitHub"
-                            >
-                                <p className="hidden text-sm md:block">View on GitHub</p>
-                                <span className="icon-[tabler--arrow-right] size-6" />
-                            </NextLink>
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
+                <NextLink
+                    href="https://github.com/vetri15"
+                    className="group flex items-center gap-2 rounded-full px-3 py-2 text-sm transition-all duration-200 hover:bg-primary/10 hover:text-primary"
+                    target="_blank"
+                    aria-label="View on GitHub"
+                >
+                    <span className="hidden md:block">View on GitHub</span>
+                    <span className="icon-[tabler--arrow-right] size-6 transition-transform duration-200 group-hover:translate-x-1" />
+                </NextLink>
             </div>
             <h2 className="text-lg text-muted-foreground">
                 Here are some of the projects I&apos;ve worked on. You can find more on my GitHub profile.
