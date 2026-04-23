@@ -44,8 +44,19 @@ export const DesktopNav = () => {
                 return
             }
 
-            const [nextSectionId] = [...visibleSections.entries()].sort((left, right) => right[1] - left[1])[0]
-            setActiveSectionPath(sectionRouteMap[nextSectionId as keyof typeof sectionRouteMap] ?? '/')
+            let nextSectionId: keyof typeof sectionRouteMap = 'about'
+            let highestIntersectionRatio = -1
+
+            visibleSections.forEach((intersectionRatio, sectionId) => {
+                if (intersectionRatio <= highestIntersectionRatio) {
+                    return
+                }
+
+                highestIntersectionRatio = intersectionRatio
+                nextSectionId = sectionId as keyof typeof sectionRouteMap
+            })
+
+            setActiveSectionPath(sectionRouteMap[nextSectionId] ?? '/')
         }
 
         const observer = new IntersectionObserver(

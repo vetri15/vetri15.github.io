@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
 
-const isProd = process.env.NODE_ENV === "production";
-const isVercel = !!process.env.VERCEL;
+const deployTarget = process.env.NEXT_PUBLIC_DEPLOY_TARGET
+const isGithubPages = deployTarget === 'github'
 
 const nextConfig = {
-    output: 'export',
-    basePath: (isProd && !isVercel) ? "" : "",
-    assetPrefix: (isProd && !isVercel) ? "" : "",
+    ...(isGithubPages
+        ? {
+              output: 'export',
+              basePath: '',
+              assetPrefix: '',
+          }
+        : {}),
     images: { unoptimized: true },
 }
 
