@@ -28,7 +28,7 @@ export const Blog = ({ blogs, tag }: BlogSectionProps) => {
     return (
         <section className="flex flex-col space-y-8 pb-20 pt-4">
             <div className="flex items-center justify-between border-b pb-4">
-                <Typography variant="h2">{heading}</Typography>
+                <Typography className="title-highlight" variant="h2">{heading}</Typography>
                 <p className="text-sm">{articleCount}</p>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

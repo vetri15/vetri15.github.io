@@ -17,7 +17,7 @@ export const Projects = ({ featured, id }: ProjectsSectionProps) => {
     return (
         <section id={id} className="flex flex-col space-y-8 py-4">
             <div className="flex items-center justify-between border-b pb-4">
-                <Typography variant="h1">🚀 {featured && 'Featured '}Projects</Typography>
+                <Typography className="title-highlight" variant="h1">🚀 {featured && 'Featured '}Projects</Typography>
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger>View on GitHub</TooltipTrigger>
