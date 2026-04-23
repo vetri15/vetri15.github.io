@@ -529,6 +529,18 @@ pre[class*='language-'] {
     animation: title-shimmer 6.5s ease-in-out infinite;
 }
 
+.title-highlight-emoji {
+    display: inline-block;
+    margin-right: 0.35em;
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: initial;
+    color: initial;
+    animation: none;
+    filter: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .title-highlight {
         animation: none;

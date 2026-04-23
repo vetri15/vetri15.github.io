@@ -17,18 +17,20 @@ export interface BlogSectionProps {
 }
 
 export const Blog = ({ blogs, tag }: BlogSectionProps) => {
-    const heading = tag ? `📝 Blog: ${tag}` : '📝 Blog'
-    const articleCount = `${blogs.length} article${ (blogs.length > 1) ? 's' : ''}`
+    const articleCount = `${blogs.length} article${(blogs.length > 1) ? 's' : ''}`
 
     function addDot(imagePath: string): string {
-        const isGithub = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "github"
-        return isGithub ? '.'+imagePath : imagePath
+        const isGithub = process.env.NEXT_PUBLIC_DEPLOY_TARGET === 'github'
+        return isGithub ? `.${imagePath}` : imagePath
     }
 
     return (
         <section className="flex flex-col space-y-8 pb-20 pt-4">
             <div className="flex items-center justify-between border-b pb-4">
-                <Typography className="title-highlight" variant="h2">{heading}</Typography>
+                <Typography className="title-highlight" variant="h2">
+                    <span className="title-highlight-emoji" aria-hidden="true">📝</span>
+                    {tag ? `Blog: ${tag}` : 'Blog'}
+                </Typography>
                 <p className="text-sm">{articleCount}</p>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -40,12 +42,12 @@ export const Blog = ({ blogs, tag }: BlogSectionProps) => {
                     return (
                         <Card key={slug} className="flex flex-col">
                             <CardHeader>
-                                <AspectRatio ratio={16 / 9} className="rounded-t-lg overflow-hidden w-full relative">
-                                    <Suspense fallback={<Skeleton className="w-full h-full" />}>
+                                <AspectRatio ratio={16 / 9} className="relative w-full overflow-hidden rounded-t-lg">
+                                    <Suspense fallback={<Skeleton className="h-full w-full" />}>
                                         <Image
                                             src={image}
                                             alt={title}
-                                            className="object-cover w-full h-full"
+                                            className="h-full w-full object-cover"
                                             width={500}
                                             height={500}
                                             priority

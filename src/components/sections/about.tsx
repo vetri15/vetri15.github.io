@@ -13,7 +13,8 @@ export const About = ({ id }: AboutProps) => {
         <section id={id} className="flex flex-col space-y-8 py-4">
             <FadeInSection>
             <Typography className="title-highlight" variant="h1" underline>
-                📝 About Me
+                <span className="title-highlight-emoji" aria-hidden="true">📝</span>
+                About Me
             </Typography>
             </FadeInSection>
             <FadeInSection>
