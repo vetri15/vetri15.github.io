@@ -1,4 +1,7 @@
+'use client'
+
 import { Typography } from '@/components/typography'
+import { useActiveHomeSection } from '@/hooks/use-active-home-section'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { projects } from '@/data'
@@ -13,6 +16,9 @@ export interface ProjectsSectionProps {
 }
 
 export const Projects = ({ featured, id }: ProjectsSectionProps) => {
+    const activePath = useActiveHomeSection()
+    const shouldAnimateGithubLink = featured && activePath === '/projects'
+
     return (
         <section id={id} className="flex flex-col space-y-8 py-4">
             <div className="flex items-center justify-between border-b pb-4">
@@ -22,11 +28,14 @@ export const Projects = ({ featured, id }: ProjectsSectionProps) => {
                 </Typography>
                 <NextLink
                     href="https://github.com/vetri15"
-                    className="group flex items-center gap-2 rounded-full px-3 py-2 text-sm transition-all duration-200 hover:bg-primary/10 hover:text-primary"
+                    className={`group flex items-center gap-2 rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 hover:bg-primary/10 hover:text-primary sm:text-sm ${
+                        shouldAnimateGithubLink ? 'github-link-bounce' : ''
+                    }`}
                     target="_blank"
                     aria-label="View on GitHub"
                 >
-                    <span className="hidden md:block">View on GitHub</span>
+                    <span className="sm:hidden">GitHub Link</span>
+                    <span className="hidden sm:inline">View on GitHub</span>
                     <span className="icon-[tabler--arrow-right] size-6 transition-transform duration-200 group-hover:translate-x-1" />
                 </NextLink>
             </div>
