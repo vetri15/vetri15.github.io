@@ -498,11 +498,11 @@ pre[class*='language-'] {
     0%,
     100% {
         background-position: 150% center;
-        filter: drop-shadow(0 0 0.3rem hsl(var(--foreground) / 0.1));
+        filter: drop-shadow(0 0 0.38rem hsl(var(--foreground) / 0.12));
     }
     50% {
         background-position: -40% center;
-        filter: drop-shadow(0 0 0.45rem hsl(var(--foreground) / 0.14));
+        filter: drop-shadow(0 0 0.65rem hsl(var(--foreground) / 0.18));
     }
 }
 
@@ -517,16 +517,16 @@ pre[class*='language-'] {
     background-image: linear-gradient(
         120deg,
         hsl(var(--foreground)) 0%,
-        hsl(var(--foreground)) 42%,
-        hsl(var(--foreground) / 0.55) 50%,
-        hsl(var(--foreground)) 58%,
+        hsl(var(--foreground)) 32%,
+        hsl(var(--foreground) / 0.22) 50%,
+        hsl(var(--foreground)) 68%,
         hsl(var(--foreground)) 100%
     );
-    background-size: 220% auto;
+    background-size: 260% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: title-shimmer 8s ease-in-out infinite;
+    animation: title-shimmer 6.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
