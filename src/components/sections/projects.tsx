@@ -21,14 +21,14 @@ export const Projects = ({ featured, id }: ProjectsSectionProps) => {
 
     return (
         <section id={id} className="flex flex-col space-y-8 py-4">
-            <div className="flex items-center justify-between border-b pb-4">
-                <Typography className="title-highlight" variant="h1">
+            <div className="flex flex-col items-center gap-3 border-b pb-4 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                <Typography className="title-highlight sm:col-start-2 sm:justify-self-center" variant="h1">
                     <span className="title-highlight-emoji" aria-hidden="true">🚀</span>
                     {featured && 'Featured '}Projects
                 </Typography>
                 <NextLink
                     href="https://github.com/vetri15"
-                    className={`group flex items-center gap-2 rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 hover:bg-primary/10 hover:text-primary sm:text-sm ${
+                    className={`group flex shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 hover:bg-primary/10 hover:text-primary sm:col-start-3 sm:justify-self-end sm:text-sm ${
                         shouldAnimateGithubLink ? 'github-link-bounce' : ''
                     }`}
                     target="_blank"

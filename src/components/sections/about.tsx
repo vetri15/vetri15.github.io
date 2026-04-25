@@ -12,10 +12,12 @@ export const About = ({ id }: AboutProps) => {
     return (
         <section id={id} className="flex flex-col space-y-8 py-4">
             <FadeInSection>
-            <Typography className="title-highlight" variant="h1" underline>
-                <span className="title-highlight-emoji" aria-hidden="true">📝</span>
-                About Me
-            </Typography>
+            <div className="flex justify-center">
+                <Typography className="title-highlight" variant="h1" underline>
+                    <span className="title-highlight-emoji" aria-hidden="true">📝</span>
+                    About Me
+                </Typography>
+            </div>
             </FadeInSection>
             <FadeInSection>
             <div className="flex flex-col space-y-6">
@@ -55,7 +57,9 @@ export const About = ({ id }: AboutProps) => {
             </FadeInSection>
             <FadeInSection>
             <div className="flex flex-col space-y-6">
-                <Typography variant="h2">Certifications</Typography>
+                <div className="flex justify-center">
+                    <Typography variant="h2">Certifications</Typography>
+                </div>
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                     {certification.map((item) => (
                         <Card key={item.title} className="w-full">
@@ -78,7 +82,9 @@ export const About = ({ id }: AboutProps) => {
             </FadeInSection>
             <FadeInSection>
             <div className="flex flex-col space-y-6">
-                <Typography variant="h2">My Skills</Typography>
+                <div className="flex justify-center">
+                    <Typography variant="h2">My Skills</Typography>
+                </div>
                 <FadeInSection>
                 <SkillsCarousel />
                 </FadeInSection>

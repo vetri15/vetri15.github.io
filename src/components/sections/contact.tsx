@@ -12,12 +12,14 @@ interface ContactProps {
 export const Contact = ({ id }: ContactProps) => {
     return (
         <section id={id} className="flex flex-col space-y-8 pb-20 pt-4">
-            <Typography className="title-highlight" variant="h2" underline>
-                <span className="title-highlight-emoji" aria-hidden="true">📫</span>
-                Let&apos;s Connect
-            </Typography>
+            <div className="flex justify-center">
+                <Typography className="title-highlight" variant="h2" underline>
+                    <span className="title-highlight-emoji" aria-hidden="true">📫</span>
+                    Let&apos;s Connect
+                </Typography>
+            </div>
             <div className="flex flex-col space-y-12">
-                <p className="text-center text-xl text-muted-foreground lg:text-left">
+                <p className="text-center text-xl text-muted-foreground">
                     Feel free to contact me if you have any questions or just want to say hi!
                 </p>
                 <div className="flex flex-col items-center space-y-4">
