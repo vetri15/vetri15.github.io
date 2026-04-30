@@ -20,7 +20,6 @@ const HomePage = () => {
             <section className="flex flex-col-reverse items-center justify-between space-x-6 py-12 lg:flex-row">
                 <div className="flex flex-col items-center space-y-6 text-center lg:items-start lg:text-left">
                     <div className="flex items-baseline space-x-1 space-y-6 lg:flex-col lg:space-x-0">
-                        <Typography variant="h1">👋</Typography>
                         <Typography
                             variant="h1"
                             className="text-base sm:text-xl md:text-3xl lg:text-5xl font-bold leading-none tracking-tight"
