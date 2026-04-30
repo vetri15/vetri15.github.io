@@ -28,7 +28,7 @@ const HomePage = () => {
                                         Hi, I&apos;m <span className="title-highlight title-highlight-primary">Vetri T</span>
                                     </Typography>
                                 </div>
-                                <p className="text-md max-w-2xl text-muted-foreground">
+                                <p className="supporting-copy max-w-2xl">
                                     I&apos;m a Backend developer specializing in Java and Spring Boot. I build REST APIs, microservices, and backend systems with clean architecture. Exploring cloud, DevOps, and AI
                                 </p>
                                 <div className="flex space-x-4">

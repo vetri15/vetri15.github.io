@@ -40,8 +40,10 @@ const AboutTimelineSection = ({ title, items }: { title: string; items: AboutTim
                     {items.map((item) => (
                         <div key={item.title} className="flex flex-col space-y-2 border-l-4 border-primary pl-4">
                             <Typography variant="h3">{item.title}</Typography>
-                            <p className="text-md text-muted-foreground">{item.subtitle}</p>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
+                            <Typography variant="h3" className="pt-1">
+                                {item.subtitle}
+                            </Typography>
+                            <p className="supporting-copy">{item.description}</p>
                         </div>
                     ))}
                 </div>

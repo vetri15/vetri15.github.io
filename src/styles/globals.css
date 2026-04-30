@@ -113,6 +113,12 @@
     }
 }
 
+@layer components {
+    .supporting-copy {
+        @apply text-base text-muted-foreground;
+    }
+}
+
 .rehype-code-title {
     width: 100%;
     background-color: var(--prism-bg-title);
