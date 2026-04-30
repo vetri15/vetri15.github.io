@@ -10,7 +10,7 @@ export const SkillsCarousel = () => {
     const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null)
     const plugin = useRef(
         Autoplay({
-            delay: 2800,
+            delay: 2000,
             stopOnInteraction: false,
             stopOnMouseEnter: true,
             stopOnFocusIn: true,
