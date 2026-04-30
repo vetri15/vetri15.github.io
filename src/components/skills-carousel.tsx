@@ -7,7 +7,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import { useEffect, useRef, useState } from 'react'
 
 export const SkillsCarousel = () => {
-    const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+    const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
     const plugin = useRef(
         Autoplay({
             delay: 2000,
