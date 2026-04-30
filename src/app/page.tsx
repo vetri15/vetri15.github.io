@@ -14,7 +14,7 @@ const HomePage = () => {
     const profileImg = appendBaseUrl('/images/profile.webp')
 
     return (
-        <Layout mainClassName="w-full max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
+        <Layout mainClassName="w-full max-w-[96rem] space-y-10 px-4 sm:px-6 lg:px-6 xl:px-8">
             <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-10">
                 <div className="lg:col-span-2">
                     <FadeInSection>
