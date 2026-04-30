@@ -596,6 +596,47 @@ pre[class*='language-'] {
     animation: github-link-bounce 700ms ease-out 1;
 }
 
+@keyframes theme-toggle-click {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    35% {
+        transform: scale(0.88) rotate(-10deg);
+    }
+    70% {
+        transform: scale(1.08) rotate(10deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.theme-toggle-click {
+    animation: theme-toggle-click 220ms ease-out 1;
+}
+
+.logo-mark {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 0.95rem;
+    padding: 1px;
+    border: 1px solid hsl(var(--border));
+    box-shadow:
+        0 0 0 1px hsl(var(--background) / 0.9),
+        0 10px 22px hsl(var(--foreground) / 0.05);
+}
+
+.logo-mark-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: calc(0.95rem - 1px);
+    background-color: hsl(var(--background));
+}
+
 @media (prefers-reduced-motion: reduce) {
     .title-highlight {
         animation: none;
@@ -606,6 +647,11 @@ pre[class*='language-'] {
     .github-link-bounce {
         animation: none;
     }
+
+    .theme-toggle-click {
+        animation: none;
+    }
+
 }
 
 .nav-link {
