@@ -8,30 +8,36 @@ interface AboutProps {
     id?: string
 }
 
-export const About = ({ id }: AboutProps) => {
+interface AboutTimelineItem {
+    title: string
+    subtitle: string
+    description: string
+}
+
+interface AboutPrimaryContentProps {
+    alignTitle?: 'center' | 'start'
+}
+
+const AboutTitle = ({ alignTitle = 'center' }: AboutPrimaryContentProps) => {
     return (
-        <section id={id} className="flex flex-col space-y-8 py-4">
-            <FadeInSection>
-            <div className="flex justify-center">
+        <FadeInSection>
+            <div className={alignTitle === 'start' ? 'flex justify-center lg:justify-start' : 'flex justify-center'}>
                 <Typography className="title-highlight" variant="h1" underline>
-                    <span className="title-highlight-emoji" aria-hidden="true">📝</span>
+                    <span className="title-highlight-emoji" aria-hidden="true">{'\u{1F4DD}'}</span>
                     About Me
                 </Typography>
             </div>
-            </FadeInSection>
-            <FadeInSection>
+        </FadeInSection>
+    )
+}
+
+const AboutTimelineSection = ({ title, items }: { title: string; items: AboutTimelineItem[] }) => {
+    return (
+        <FadeInSection>
             <div className="flex flex-col space-y-6">
-                <Typography variant="h2">Summary</Typography>
-                <p className="text-lg text-muted-foreground">
-                    Spring Boot developer with experience in designing and scaling microservices-based applications. Proficient in Java, Spring ecosystem, and cloud-native development. Focused on delivering high-quality backend solutions that drive business value.
-                </p>
-            </div>
-            </FadeInSection>
-            <FadeInSection>
-            <div className="flex flex-col space-y-6">
-                <Typography variant="h2">Education</Typography>
+                <Typography variant="h2">{title}</Typography>
                 <div className="flex flex-col gap-3">
-                    {education.map((item) => (
+                    {items.map((item) => (
                         <div key={item.title} className="flex flex-col space-y-2 border-l-4 border-primary pl-4">
                             <Typography variant="h3">{item.title}</Typography>
                             <p className="text-md text-muted-foreground">{item.subtitle}</p>
@@ -40,56 +46,71 @@ export const About = ({ id }: AboutProps) => {
                     ))}
                 </div>
             </div>
-            </FadeInSection>
+        </FadeInSection>
+    )
+}
+
+export const AboutPrimaryContent = ({ alignTitle = 'center' }: AboutPrimaryContentProps) => {
+    return (
+        <div className="flex flex-col space-y-8">
+            <AboutTitle alignTitle={alignTitle} />
             <FadeInSection>
-            <div className="flex flex-col space-y-6">
-                <Typography variant="h2">Work Experience</Typography>
-                <div className="flex flex-col gap-3">
-                    {experience.map((item) => (
-                        <div key={item.title} className="flex flex-col space-y-2 border-l-4 border-primary pl-4">
-                            <Typography variant="h3">{item.title}</Typography>
-                            <p className="text-md text-muted-foreground">{item.subtitle}</p>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                    ))}
+                <div className="flex flex-col space-y-6">
+                    <Typography variant="h2">Summary</Typography>
+                    <p className="text-lg text-muted-foreground">
+                        Spring Boot developer with experience in designing and scaling microservices-based applications. Proficient in Java, Spring ecosystem, and cloud-native development. Focused on delivering high-quality backend solutions that drive business value.
+                    </p>
                 </div>
-            </div>
             </FadeInSection>
+            <AboutTimelineSection title="Education" items={education} />
+            <AboutTimelineSection title="Work Experience" items={experience} />
+        </div>
+    )
+}
+
+export const AboutSecondaryContent = () => {
+    return (
+        <div className="flex flex-col space-y-8 lg:h-full lg:justify-between">
             <FadeInSection>
-            <div className="flex flex-col space-y-6">
-                <div className="flex justify-center">
-                    <Typography variant="h2">Certifications</Typography>
-                </div>
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                    {certification.map((item) => (
-                        <Card key={item.title} className="w-full">
-                            <CardHeader>
-                                <div className="flex justify-center flex-wrap gap-2">
-                                            <span key={item.icon} className={`${item.icon} size-6`} />
+                <div className="flex flex-col space-y-6">
+                    <div className="flex justify-center">
+                        <Typography variant="h2">Certifications</Typography>
+                    </div>
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                        {certification.map((item) => (
+                            <Card key={item.title} className="w-full">
+                                <CardHeader>
+                                    <div className="flex flex-wrap justify-center gap-2">
+                                        <span className={`${item.icon} size-6`} />
                                     </div>
-                                
-                            </CardHeader>
-                            {/* <CardContent>
-                                <CardDescription>{item.description}</CardDescription>
-                            </CardContent> */}
-                            <CardFooter className=" justify-center mt-auto">
+                                </CardHeader>
+                                <CardFooter className="mt-auto justify-center">
                                     <CardTitle>{item.title}</CardTitle>
                                 </CardFooter>
-                        </Card>
-                    ))}
+                            </Card>
+                        ))}
+                    </div>
                 </div>
-            </div>
             </FadeInSection>
             <FadeInSection>
-            <div className="flex flex-col space-y-6">
-                <div className="flex justify-center">
-                    <Typography variant="h2">My Skills</Typography>
+                <div className="flex flex-col space-y-6 lg:flex-1">
+                    <div className="flex justify-center">
+                        <Typography variant="h2">My Skills</Typography>
+                    </div>
+                    <FadeInSection>
+                        <SkillsCarousel />
+                    </FadeInSection>
                 </div>
-                <FadeInSection>
-                <SkillsCarousel />
-                </FadeInSection>
-            </div>
             </FadeInSection>
+        </div>
+    )
+}
+
+export const About = ({ id }: AboutProps) => {
+    return (
+        <section id={id} className="flex flex-col space-y-8 py-4">
+            <AboutPrimaryContent />
+            <AboutSecondaryContent />
         </section>
     )
 }

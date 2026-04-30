@@ -49,7 +49,7 @@ export const SkillsCarousel = () => {
         <Carousel
             opts={{ align: 'start', loop: true }}
             plugins={[plugin.current]}
-            className="group relative"
+            className="group relative lg:h-full"
             onMouseEnter={revealControls}
             onMouseLeave={hideControlsWithDelay}
             onFocusCapture={revealControls}
@@ -57,9 +57,9 @@ export const SkillsCarousel = () => {
             onTouchStart={revealControls}
             onTouchEnd={hideControlsWithDelay}
         >
-            <CarouselContent className="-ml-1">
+            <CarouselContent className="-ml-1 lg:h-full">
                 {carouselSkills.map((skill, index) => (
-                    <CarouselItem key={`${skill.title}-${index}`} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={`${skill.title}-${index}`} className="pl-1 md:basis-1/2 lg:h-full lg:basis-1/2">
                         <div className="h-full p-1">
                             <div
                                 className={[
@@ -69,7 +69,7 @@ export const SkillsCarousel = () => {
                                         : 'bg-border dark:bg-border',
                                 ].join(' ')}
                             >
-                                <Card className="flex h-full min-h-[220px] flex-col rounded-2xl border-0 bg-background shimmer">
+                                <Card className="flex h-full min-h-[220px] flex-col rounded-2xl border-0 bg-background shimmer lg:min-h-[300px]">
                                     <CardHeader>
                                         <CardTitle>{skill.title}</CardTitle>
                                     </CardHeader>
