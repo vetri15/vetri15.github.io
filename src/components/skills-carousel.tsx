@@ -4,9 +4,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { skills } from '@/data'
 import Autoplay from 'embla-carousel-autoplay'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export const SkillsCarousel = () => {
+    const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null)
     const plugin = useRef(
         Autoplay({
             delay: 2800,
@@ -17,9 +18,45 @@ export const SkillsCarousel = () => {
         }),
     )
     const carouselSkills = [...skills, ...skills]
+    const [showControls, setShowControls] = useState(false)
+
+    const clearControlsTimer = () => {
+        if (controlsTimeoutRef.current) {
+            clearTimeout(controlsTimeoutRef.current)
+            controlsTimeoutRef.current = null
+        }
+    }
+
+    const revealControls = () => {
+        clearControlsTimer()
+        setShowControls(true)
+    }
+
+    const hideControlsWithDelay = () => {
+        clearControlsTimer()
+        controlsTimeoutRef.current = setTimeout(() => {
+            setShowControls(false)
+        }, 1200)
+    }
+
+    useEffect(() => {
+        return () => {
+            clearControlsTimer()
+        }
+    }, [])
 
     return (
-        <Carousel opts={{ align: 'start', loop: true }} plugins={[plugin.current]} className="group relative">
+        <Carousel
+            opts={{ align: 'start', loop: true }}
+            plugins={[plugin.current]}
+            className="group relative"
+            onMouseEnter={revealControls}
+            onMouseLeave={hideControlsWithDelay}
+            onFocusCapture={revealControls}
+            onBlurCapture={hideControlsWithDelay}
+            onTouchStart={revealControls}
+            onTouchEnd={hideControlsWithDelay}
+        >
             <CarouselContent className="-ml-1">
                 {carouselSkills.map((skill, index) => (
                     <CarouselItem key={`${skill.title}-${index}`} className="pl-1 md:basis-1/2 lg:basis-1/3">
@@ -53,10 +90,18 @@ export const SkillsCarousel = () => {
                 ))}
             </CarouselContent>
             <CarouselPrevious
-                className="left-3 h-10 w-10 border border-border/70 bg-background/75 text-foreground shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-background hover:text-foreground focus-visible:bg-background sm:opacity-75 md:pointer-events-none md:-translate-x-1 md:opacity-0 md:group-hover:pointer-events-auto md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-focus-within:pointer-events-auto md:group-focus-within:translate-x-0 md:group-focus-within:opacity-100 dark:bg-background/60"
+                className={`left-3 h-10 w-10 border border-border/70 bg-background/75 text-foreground shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-background hover:text-foreground focus-visible:bg-background dark:bg-background/60 ${
+                    showControls
+                        ? 'pointer-events-auto translate-x-0 opacity-100'
+                        : 'pointer-events-none -translate-x-1 opacity-0'
+                }`}
             />
             <CarouselNext
-                className="right-3 h-10 w-10 border border-border/70 bg-background/75 text-foreground shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-background hover:text-foreground focus-visible:bg-background sm:opacity-75 md:pointer-events-none md:translate-x-1 md:opacity-0 md:group-hover:pointer-events-auto md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-focus-within:pointer-events-auto md:group-focus-within:translate-x-0 md:group-focus-within:opacity-100 dark:bg-background/60"
+                className={`right-3 h-10 w-10 border border-border/70 bg-background/75 text-foreground shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-background hover:text-foreground focus-visible:bg-background dark:bg-background/60 ${
+                    showControls
+                        ? 'pointer-events-auto translate-x-0 opacity-100'
+                        : 'pointer-events-none translate-x-1 opacity-0'
+                }`}
             />
         </Carousel>
     )
