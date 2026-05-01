@@ -46,7 +46,6 @@ export const Contact = ({ id }: ContactProps) => {
                             </a>
                         ))}
                     </div>
-                    <p className="text-lg text-primary">I look forward to hearing from you!</p>
                 </div>
             </div>
             <FadeInSection>
