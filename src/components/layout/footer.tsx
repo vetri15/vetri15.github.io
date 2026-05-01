@@ -9,17 +9,7 @@ export const Footer = () => {
             <div className="container flex h-full flex-col items-center justify-between space-y-2 py-4 md:flex-row md:space-y-0">
                 <div className="flex flex-col items-center space-y-2 md:items-start">
                     <p>&copy; {date} Vetri T</p>
-                    <p>
-                        {' '}
-                        <NextLink
-                            href="https://github.com/vetri15"
-                            target="_blank"
-                            className="link"
-                            aria-label="GitHub repository"
-                        >
-                            View on GitHub
-                        </NextLink>
-                    </p>
+                    <p className="text-sm text-muted-foreground">Built with purpose.</p>
                 </div>
                 <div className="flex space-x-4">
                     {contact.map((item) => (
