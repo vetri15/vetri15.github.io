@@ -50,7 +50,7 @@ export const LinkDock = () => {
     return (
         <div
             ref={dockRef}
-            className={`fixed bottom-6 left-1/2 z-50 -translate-x-1/2 transition-opacity duration-300 ${
+            className={`fixed bottom-6 left-1/2 z-50 -translate-x-1/2 transition-opacity duration-500 ${
                 isAtPageBottom ? 'pointer-events-none opacity-0' : 'opacity-100'
             }`}
         >
