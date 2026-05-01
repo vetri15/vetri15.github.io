@@ -31,7 +31,6 @@ export const Contact = ({ id }: ContactProps) => {
                         className="size-[300px] rounded-full md:size-[400px]"
                         priority
                     />
-                    <Typography variant="h1">Contact Information</Typography>
                     <div className="flex space-x-4">
                         {contact.map((item) => (
                             <a
