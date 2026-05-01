@@ -29,7 +29,7 @@ const HomePage = () => {
                                     </Typography>
                                 </div>
                                 <p className="supporting-copy max-w-2xl">
-                                    I&apos;m a Backend developer specializing in Java and Spring Boot. I build REST APIs, microservices, and backend systems with clean architecture. Exploring cloud, DevOps, and AI
+                                    Backend Developer specializing in Java and Spring Boot, building scalable REST APIs, Microservices, and backend systems for complex business flows. Focused on clean architecture, performance, maintainability, and production-ready solutions. Exploring cloud, DevOps, and AI-driven backend development.
                                 </p>
                                 <div className="flex space-x-4">
                                     <NextLink href="/projects">
