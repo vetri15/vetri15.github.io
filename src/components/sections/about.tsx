@@ -80,7 +80,10 @@ export const AboutSecondaryContent = () => {
                     </div>
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                         {certification.map((item) => (
-                            <Card key={item.title} className="w-full">
+                            <Card key={item.title} className="relative w-full overflow-hidden">
+                                <div className="absolute right-0 top-0 flex h-11 w-11 items-center justify-center rounded-bl-xl border-b border-l border-emerald-500/30 bg-emerald-500/15 text-emerald-600 dark:border-emerald-400/30 dark:bg-emerald-400/15 dark:text-emerald-300">
+                                    <span className="icon-[tabler--circle-check-filled] size-5" aria-hidden="true" />
+                                </div>
                                 <CardHeader>
                                     <div className="flex flex-wrap justify-center gap-2">
                                         <span className={`${item.icon} size-6`} />
