@@ -18,12 +18,12 @@ const HomePage = () => {
             <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-10">
                 <div className="lg:col-span-2">
                     <FadeInSection>
-                        <section className="flex flex-col-reverse items-center justify-between gap-4 py-12 lg:flex-row lg:gap-10">
-                            <div className="flex max-w-3xl flex-col items-center space-y-6 text-center lg:items-start lg:text-left">
+                        <section className="flex flex-col-reverse items-center gap-8 py-12 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10">
+                            <div className="flex max-w-3xl flex-col items-center space-y-6 text-center lg:max-w-none lg:items-start lg:text-left">
                                 <div className="flex items-baseline space-x-1 space-y-6 lg:flex-col lg:space-x-0">
                                     <Typography
                                         variant="h1"
-                                        className="text-base font-bold leading-none tracking-tight sm:text-xl md:text-3xl lg:text-5xl"
+                                        className="text-2xl font-bold leading-none tracking-tight sm:text-3xl md:text-3xl lg:text-5xl"
                                     >
                                         Hi, I&apos;m <span className="title-highlight title-highlight-primary">Vetri T</span>
                                     </Typography>
@@ -45,14 +45,16 @@ const HomePage = () => {
                                     </NextLink>
                                 </div>
                             </div>
-                            <Image
-                                src={profileImg}
-                                alt="Profile"
-                                width={500}
-                                height={500}
-                                className="size-[300px] rounded-xl md:size-[450px] lg:size-[500px]"
-                                priority
-                            />
+                            <div className="flex w-full justify-center lg:justify-center">
+                                <Image
+                                    src={profileImg}
+                                    alt="Profile"
+                                    width={500}
+                                    height={500}
+                                    className="size-[300px] rounded-xl md:size-[450px] lg:size-[500px]"
+                                    priority
+                                />
+                            </div>
                         </section>
                     </FadeInSection>
                 </div>
