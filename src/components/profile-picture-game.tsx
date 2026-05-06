@@ -236,7 +236,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                                             sideOffset={6}
                                             className="w-56 p-3 text-sm leading-relaxed"
                                         >
-                                            You are playing against the most sophisticated AI agent ever created.
+                                            You are facing an advanced AI agent powered by quantum computing, high-speed neural reasoning, and adaptive decision systems. Every move is analyzed, predicted, and countered with precision beyond conventional intelligence.
                                         </PopoverContent>
                                     </Popover>
                                 </div>
