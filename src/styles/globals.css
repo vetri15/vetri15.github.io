@@ -495,9 +495,15 @@ pre[class*='language-'] {
 }
 
 @keyframes shimmer {
-  0% { background-position: -300% 0; }
-  50% { background-position: 300% 0; }
-  100% { background-position: -300% 0; }
+    0% {
+        background-position: -300% 0;
+    }
+    50% {
+        background-position: 300% 0;
+    }
+    100% {
+        background-position: -300% 0;
+    }
 }
 
 @keyframes title-shimmer {
@@ -513,8 +519,8 @@ pre[class*='language-'] {
 }
 
 .animate-shimmer {
-  background-size: 400% 100%;
-  animation: shimmer 30s linear infinite;
+    background-size: 400% 100%;
+    animation: shimmer 30s linear infinite;
 }
 
 .title-highlight {
@@ -621,6 +627,21 @@ pre[class*='language-'] {
     animation: theme-toggle-click 220ms ease-out 1;
 }
 
+@keyframes vt-loading {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.vt-loading-bar {
+    transform-origin: left;
+    animation: vt-loading 2s ease-in-out forwards;
+}
+
 .logo-mark {
     position: relative;
     display: inline-flex;
@@ -658,6 +679,10 @@ pre[class*='language-'] {
         animation: none;
     }
 
+    .vt-loading-bar {
+        animation: none;
+        transform: scaleX(1);
+    }
 }
 
 .nav-link {
@@ -687,6 +712,3 @@ pre[class*='language-'] {
 .nav-link.nav-link-active::after {
     transform: scaleX(1);
 }
-
-
-

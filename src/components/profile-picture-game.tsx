@@ -2,11 +2,9 @@
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { getBestMove, getWinningLine, type BoardCell, type Player } from '@/lib/xo-bot'
 import Image from 'next/image'
-import { useMemo, useState } from 'react'
-
-type Player = 'X' | 'O'
-type BoardCell = Player | null
+import { useEffect, useMemo, useState } from 'react'
 
 interface ProfilePictureGameProps {
     src: string
@@ -14,57 +12,115 @@ interface ProfilePictureGameProps {
     enabled?: boolean
 }
 
-const winningLines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-]
+type GamePhase = 'flipping' | 'loading' | 'game'
 
 const createEmptyBoard = (): BoardCell[] => Array<BoardCell>(9).fill(null)
-
-const findWinner = (board: BoardCell[]) => {
-    return winningLines.find(([first, second, third]) => {
-        const player = board[first]
-        return player && player === board[second] && player === board[third]
-    })
-}
+const flipDuration = 500
+const loadingDuration = 2000
 
 export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureGameProps) => {
     const [isOpen, setIsOpen] = useState(false)
+    const [phase, setPhase] = useState<GamePhase>('flipping')
     const [board, setBoard] = useState<BoardCell[]>(createEmptyBoard)
     const [currentPlayer, setCurrentPlayer] = useState<Player>('X')
 
-    const winningLine = useMemo(() => findWinner(board), [board])
+    const winningLine = useMemo(() => getWinningLine(board), [board])
     const winner = winningLine ? board[winningLine[0]] : null
     const isDraw = !winner && board.every(Boolean)
-    const status = winner ? `${winner} won!` : isDraw ? 'Draw game!' : `${currentPlayer}'s turn`
+    const status =
+        phase === 'loading'
+            ? 'Preparing VT Gen AI'
+            : winner
+              ? `${winner} won!`
+              : isDraw
+                ? 'Draw game!'
+                : currentPlayer === 'X'
+                  ? 'Your Turn (X)'
+                  : "VT - Gen AI's Turn"
+
+    useEffect(() => {
+        if (!isOpen || phase !== 'flipping') {
+            return
+        }
+
+        const flipTimer = window.setTimeout(() => {
+            setPhase('loading')
+        }, flipDuration)
+
+        return () => window.clearTimeout(flipTimer)
+    }, [isOpen, phase])
+
+    useEffect(() => {
+        if (!isOpen || phase !== 'loading') {
+            return
+        }
+
+        const loadingTimer = window.setTimeout(() => {
+            setPhase('game')
+        }, loadingDuration)
+
+        return () => window.clearTimeout(loadingTimer)
+    }, [isOpen, phase])
+
+    useEffect(() => {
+        if (!isOpen || phase !== 'game' || currentPlayer !== 'O' || winner || isDraw) {
+            return
+        }
+
+        const botTimer = window.setTimeout(() => {
+            setBoard((previousBoard) => {
+                if (getWinningLine(previousBoard) || previousBoard.every(Boolean)) {
+                    return previousBoard
+                }
+
+                const botMove = getBestMove(previousBoard)
+
+                if (botMove === null) {
+                    return previousBoard
+                }
+
+                const nextBoard = [...previousBoard]
+                nextBoard[botMove] = 'O'
+
+                if (!getWinningLine(nextBoard) && !nextBoard.every(Boolean)) {
+                    setCurrentPlayer('X')
+                }
+
+                return nextBoard
+            })
+        }, 450)
+
+        return () => window.clearTimeout(botTimer)
+    }, [currentPlayer, isDraw, isOpen, phase, winner])
 
     const resetGame = () => {
         setBoard(createEmptyBoard())
         setCurrentPlayer('X')
     }
 
+    const openGame = () => {
+        resetGame()
+        setPhase('flipping')
+        setIsOpen(true)
+    }
+
     const closeGame = () => {
         setIsOpen(false)
+        setPhase('flipping')
         resetGame()
     }
 
     const playCell = (index: number) => {
-        if (board[index] || winner || isDraw) {
+        if (phase !== 'game' || currentPlayer !== 'X' || board[index] || winner || isDraw) {
             return
         }
 
         const nextBoard = [...board]
-        nextBoard[index] = currentPlayer
+        nextBoard[index] = 'X'
         setBoard(nextBoard)
 
-        if (!findWinner(nextBoard) && !nextBoard.every(Boolean)) {
-            setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X')
+        if (!getWinningLine(nextBoard) && !nextBoard.every(Boolean)) {
+            setCurrentPlayer('O')
         }
     }
 
@@ -95,7 +151,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                         'group absolute inset-0 overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [backface-visibility:hidden]',
                         isOpen && 'pointer-events-none',
                     )}
-                    onClick={() => setIsOpen(true)}
+                    onClick={openGame}
                     aria-label="Open XO mini game"
                     aria-hidden={isOpen}
                     tabIndex={isOpen ? -1 : 0}
@@ -131,33 +187,65 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                         </Button>
                     </div>
 
-                    <div className="flex min-h-0 items-center justify-center py-2 sm:py-4">
-                        <div className="grid aspect-square h-full max-h-full max-w-full grid-cols-3 gap-2 sm:gap-3">
-                            {board.map((cell, index) => {
-                                const isWinningCell = winningLine?.includes(index)
-
-                                return (
-                                    <button
-                                        key={index}
-                                        type="button"
-                                        className={cn(
-                                            'flex aspect-square items-center justify-center rounded-md border border-zinc-400 bg-zinc-200 text-3xl font-bold transition-colors hover:bg-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-100 dark:border-border dark:bg-background dark:hover:bg-accent sm:text-5xl',
-                                            cell === 'X' && 'text-primary',
-                                            cell === 'O' && 'text-emerald-700 dark:text-emerald-300',
-                                            isWinningCell &&
-                                                'border-primary bg-primary/15 dark:border-primary dark:bg-primary/10',
-                                        )}
-                                        onClick={() => playCell(index)}
-                                        disabled={Boolean(cell) || Boolean(winner) || isDraw}
-                                        aria-label={`Cell ${index + 1}${cell ? `, ${cell}` : ''}`}
-                                        tabIndex={isOpen ? 0 : -1}
-                                    >
-                                        {cell}
-                                    </button>
-                                )
-                            })}
+                    {phase !== 'game' ? (
+                        <div className="flex min-h-0 flex-col items-center justify-center gap-4 py-2 text-center sm:gap-5">
+                            <p className="text-sm font-semibold text-foreground sm:text-base">
+                                Loading VT - Genesis AI
+                            </p>
+                            <span className="logo-mark">
+                                <span className="logo-mark-inner">
+                                    <Image
+                                        src="/android-chrome-192x192.png"
+                                        alt=""
+                                        width={96}
+                                        height={96}
+                                        className="size-16 object-contain sm:size-24"
+                                    />
+                                </span>
+                            </span>
+                            <div className="h-2 w-40 overflow-hidden rounded-full bg-zinc-200 dark:bg-secondary sm:w-56">
+                                <div
+                                    className={cn(
+                                        'h-full w-full origin-left rounded-full bg-primary',
+                                        phase === 'loading' ? 'vt-loading-bar' : 'scale-x-0',
+                                    )}
+                                />
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="flex min-h-0 items-center justify-center py-2 sm:py-4">
+                            <div className="grid aspect-square h-full max-h-full max-w-full grid-cols-3 gap-2 sm:gap-3">
+                                {board.map((cell, index) => {
+                                    const isWinningCell = winningLine?.includes(index)
+
+                                    return (
+                                        <button
+                                            key={index}
+                                            type="button"
+                                            className={cn(
+                                                'flex aspect-square items-center justify-center rounded-md border border-zinc-400 bg-zinc-200 text-3xl font-bold transition-colors hover:bg-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-100 dark:border-border dark:bg-background dark:hover:bg-accent sm:text-5xl',
+                                                cell === 'X' && 'text-primary',
+                                                cell === 'O' && 'text-emerald-700 dark:text-emerald-300',
+                                                currentPlayer === 'O' &&
+                                                    !cell &&
+                                                    'hover:bg-zinc-200 dark:hover:bg-background',
+                                                isWinningCell &&
+                                                    'border-primary bg-primary/15 dark:border-primary dark:bg-primary/10',
+                                            )}
+                                            onClick={() => playCell(index)}
+                                            disabled={
+                                                currentPlayer === 'O' || Boolean(cell) || Boolean(winner) || isDraw
+                                            }
+                                            aria-label={`Cell ${index + 1}${cell ? `, ${cell}` : ''}`}
+                                            tabIndex={isOpen ? 0 : -1}
+                                        >
+                                            {cell}
+                                        </button>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    )}
 
                     <div className="flex justify-center">
                         <Button
@@ -165,6 +253,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                             variant="outline"
                             size="sm"
                             onClick={resetGame}
+                            disabled={phase === 'loading'}
                             tabIndex={isOpen ? 0 : -1}
                         >
                             Reset
