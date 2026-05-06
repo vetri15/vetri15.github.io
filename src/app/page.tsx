@@ -1,13 +1,13 @@
 import FadeInSection from '@/components/fade-in-section'
 import { Layout } from '@/components/layout'
 import { LinkDock } from '@/components/link-dock'
+import { ProfilePictureGame } from '@/components/profile-picture-game'
 import { AboutPrimaryContent, AboutSecondaryContent } from '@/components/sections/about'
 import { Contact } from '@/components/sections/contact'
 import { FeaturedProjectsGrid } from '@/components/sections/projects'
 import { Typography } from '@/components/typography'
 import { Button } from '@/components/ui/button'
 import { appendBaseUrl } from '@/utils/imagePath'
-import Image from 'next/image'
 import NextLink from 'next/link'
 
 const HomePage = () => {
@@ -25,11 +25,15 @@ const HomePage = () => {
                                         variant="h1"
                                         className="text-2xl font-bold leading-none tracking-tight sm:text-3xl md:text-3xl lg:text-5xl"
                                     >
-                                        Hi, I&apos;m <span className="title-highlight title-highlight-primary">Vetri T</span>
+                                        Hi, I&apos;m{' '}
+                                        <span className="title-highlight title-highlight-primary">Vetri T</span>
                                     </Typography>
                                 </div>
                                 <p className="supporting-copy max-w-2xl">
-                                    Backend Developer specializing in Java and Spring Boot, building scalable REST APIs, Microservices, and backend systems for complex business flows. Focused on clean architecture, performance, maintainability, and production-ready solutions. Exploring cloud, DevOps, and AI-driven backend development.
+                                    Backend Developer specializing in Java and Spring Boot, building scalable REST APIs,
+                                    Microservices, and backend systems for complex business flows. Focused on clean
+                                    architecture, performance, maintainability, and production-ready solutions.
+                                    Exploring cloud, DevOps, and AI-driven backend development.
                                 </p>
                                 <div className="flex space-x-4">
                                     <NextLink href="/projects">
@@ -46,14 +50,7 @@ const HomePage = () => {
                                 </div>
                             </div>
                             <div className="flex w-full justify-center lg:justify-center">
-                                <Image
-                                    src={profileImg}
-                                    alt="Profile"
-                                    width={500}
-                                    height={500}
-                                    className="size-[300px] rounded-xl md:size-[450px] lg:size-[500px]"
-                                    priority
-                                />
+                                <ProfilePictureGame src={profileImg} alt="Profile" enabled={true} />
                             </div>
                         </section>
                     </FadeInSection>
