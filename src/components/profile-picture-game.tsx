@@ -322,16 +322,19 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                     )}
 
                     <div className="flex justify-center">
-                        <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={resetGame}
-                            disabled={phase === 'loading'}
-                            tabIndex={isOpen ? 0 : -1}
-                        >
-                            Reset
-                        </Button>
+                        {phase === 'game' ? (
+                            <Button
+                                type="button"
+                                variant="outline"
+                                className="text-base"
+                                onClick={resetGame}
+                                tabIndex={isOpen ? 0 : -1}
+                            >
+                                Reset
+                            </Button>
+                        ) : (
+                            <span className="h-8" aria-hidden="true" />
+                        )}
                     </div>
                 </div>
             </div>
