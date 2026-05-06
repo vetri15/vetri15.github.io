@@ -28,16 +28,13 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
     const winningLine = useMemo(() => getWinningLine(board), [board])
     const winner = winningLine ? board[winningLine[0]] : null
     const isDraw = !winner && board.every(Boolean)
-    const status =
-        phase === 'loading'
-            ? 'Preparing VT Gen AI'
-            : winner
-              ? `${winner} won!`
-              : isDraw
-                ? 'Draw game!'
-                : currentPlayer === 'X'
-                  ? 'Your Turn (X)'
-                  : "VT - Gen AI's Turn"
+    const status = winner
+        ? `${winner} won!`
+        : isDraw
+          ? 'Draw game!'
+          : currentPlayer === 'X'
+            ? 'Your Turn (X)'
+            : "VT - Gen AI's Turn"
 
     useEffect(() => {
         if (!isOpen || phase !== 'flipping') {
@@ -174,10 +171,14 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                     aria-hidden={!isOpen}
                 >
                     <div className="flex items-start justify-between gap-3">
-                        <div>
-                            <p className="text-sm font-semibold text-muted-foreground">XO Game</p>
-                            <p className="text-lg font-bold text-primary sm:text-2xl">{status}</p>
-                        </div>
+                        {phase === 'game' ? (
+                            <div>
+                                <p className="text-sm font-semibold text-muted-foreground">XO Game</p>
+                                <p className="text-lg font-bold text-primary sm:text-2xl">{status}</p>
+                            </div>
+                        ) : (
+                            <span aria-hidden="true" />
+                        )}
                         <Button
                             type="button"
                             variant="ghost"
