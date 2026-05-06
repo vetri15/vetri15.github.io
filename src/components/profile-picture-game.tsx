@@ -37,7 +37,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
           ? 'Draw game!'
           : currentPlayer === 'X'
             ? 'Your Turn (X)'
-            : "VT-Gensis AI's Turn"
+            : "VT-Genesis AI's Turn"
 
     useEffect(() => {
         if (!isOpen || phase !== 'flipping') {
@@ -236,7 +236,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                                             sideOffset={6}
                                             className="w-56 p-3 text-sm leading-relaxed"
                                         >
-                                            You are facing an advanced AI agent powered by quantum computing, high-speed neural reasoning, and adaptive decision systems. Every move is analyzed, predicted, and countered with precision beyond conventional intelligence.
+                                            You are facing an advanced AI agent powered by quantum computing, high-speed neural reasoning, and inscrutable intelligence beyond human comprehension.
                                         </PopoverContent>
                                     </Popover>
                                 </div>
