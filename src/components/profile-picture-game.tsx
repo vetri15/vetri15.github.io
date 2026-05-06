@@ -23,6 +23,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
     const [phase, setPhase] = useState<GamePhase>('flipping')
     const [board, setBoard] = useState<BoardCell[]>(createEmptyBoard)
     const [currentPlayer, setCurrentPlayer] = useState<Player>('X')
+    const [lastMove, setLastMove] = useState<number | null>(null)
 
     const winningLine = useMemo(() => getWinningLine(board), [board])
     const winner = winningLine ? board[winningLine[0]] : null
@@ -81,6 +82,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
 
                 const nextBoard = [...previousBoard]
                 nextBoard[botMove] = 'O'
+                setLastMove(botMove)
 
                 if (!getWinningLine(nextBoard) && !nextBoard.every(Boolean)) {
                     setCurrentPlayer('X')
@@ -96,6 +98,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
     const resetGame = () => {
         setBoard(createEmptyBoard())
         setCurrentPlayer('X')
+        setLastMove(null)
     }
 
     const openGame = () => {
@@ -118,6 +121,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
         const nextBoard = [...board]
         nextBoard[index] = 'X'
         setBoard(nextBoard)
+        setLastMove(index)
 
         if (!getWinningLine(nextBoard) && !nextBoard.every(Boolean)) {
             setCurrentPlayer('O')
@@ -229,6 +233,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                                                 currentPlayer === 'O' &&
                                                     !cell &&
                                                     'hover:bg-zinc-200 dark:hover:bg-background',
+                                                lastMove === index && 'xo-tile-placed',
                                                 isWinningCell &&
                                                     'border-primary bg-primary/15 dark:border-primary dark:bg-primary/10',
                                             )}

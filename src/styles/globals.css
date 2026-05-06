@@ -642,6 +642,27 @@ pre[class*='language-'] {
     animation: vt-loading 1s ease-in-out forwards;
 }
 
+@keyframes xo-tile-placed {
+    0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 hsl(var(--primary) / 0);
+    }
+
+    45% {
+        transform: scale(1.06);
+        box-shadow: 0 0 1rem hsl(var(--primary) / 0.35);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 hsl(var(--primary) / 0);
+    }
+}
+
+.xo-tile-placed {
+    animation: xo-tile-placed 320ms ease-out;
+}
+
 .logo-mark {
     position: relative;
     display: inline-flex;
@@ -682,6 +703,10 @@ pre[class*='language-'] {
     .vt-loading-bar {
         animation: none;
         transform: scaleX(1);
+    }
+
+    .xo-tile-placed {
+        animation: none;
     }
 }
 
