@@ -1,12 +1,12 @@
 import { ThemeProvider } from '@/components/theme-provider'
 import { BASE_URL, OPEN_GRAPH_IMAGE } from '@/config'
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Source_Sans_3 } from 'next/font/google'
 import { ReactNode } from 'react'
 import '@/styles/globals.css'
 import { appendBaseUrl } from '@/utils/imagePath'
 
-const inter = Inter({ subsets: ['latin'] })
+const sourceSans = Source_Sans_3({ subsets: ['latin'] })
 
 const title = 'Vetri T'
 const description =
@@ -94,7 +94,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
                 {/* lazy loading images */}
                 <script src="https://afarkas.github.io/lazysizes/lazysizes.min.js" async></script>
             </head>
-            <body className={inter.className}>
+            <body className={sourceSans.className}>
                 <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
                     {children}
                 </ThemeProvider>
