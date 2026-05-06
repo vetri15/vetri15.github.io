@@ -1,10 +1,11 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { getBestMove, getWinningLine, type BoardCell, type Player } from '@/lib/xo-bot'
 import Image from 'next/image'
-import { useEffect, useMemo, useState } from 'react'
+import { type MouseEvent, useEffect, useMemo, useState } from 'react'
 
 interface ProfilePictureGameProps {
     src: string
@@ -20,6 +21,8 @@ const loadingDuration = 2000
 
 export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureGameProps) => {
     const [isOpen, setIsOpen] = useState(false)
+    const [isInfoOpen, setIsInfoOpen] = useState(false)
+    const [isInfoPinned, setIsInfoPinned] = useState(false)
     const [phase, setPhase] = useState<GamePhase>('flipping')
     const [board, setBoard] = useState<BoardCell[]>(createEmptyBoard)
     const [currentPlayer, setCurrentPlayer] = useState<Player>('X')
@@ -34,7 +37,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
           ? 'Draw game!'
           : currentPlayer === 'X'
             ? 'Your Turn (X)'
-            : "VT - Gen AI's Turn"
+            : "VT-Gensis AI's Turn"
 
     useEffect(() => {
         if (!isOpen || phase !== 'flipping') {
@@ -106,8 +109,33 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
 
     const closeGame = () => {
         setIsOpen(false)
+        setIsInfoOpen(false)
+        setIsInfoPinned(false)
         setPhase('flipping')
         resetGame()
+    }
+
+    const showInfo = () => {
+        setIsInfoOpen(true)
+    }
+
+    const hideInfo = () => {
+        if (!isInfoPinned) {
+            setIsInfoOpen(false)
+        }
+    }
+
+    const toggleInfo = (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
+
+        if (isInfoPinned) {
+            setIsInfoPinned(false)
+            setIsInfoOpen(false)
+            return
+        }
+
+        setIsInfoPinned(true)
+        setIsInfoOpen(true)
     }
 
     const playCell = (index: number) => {
@@ -173,7 +201,45 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                     <div className="flex items-start justify-between gap-3">
                         {phase === 'game' ? (
                             <div>
-                                <p className="text-sm font-semibold text-muted-foreground">XO Game</p>
+                                <div className="flex items-center gap-1.5">
+                                    <p className="text-sm font-semibold text-muted-foreground">XO Game</p>
+                                    <Popover
+                                        open={isInfoOpen}
+                                        onOpenChange={(open) => {
+                                            setIsInfoOpen(open)
+
+                                            if (!open) {
+                                                setIsInfoPinned(false)
+                                            }
+                                        }}
+                                    >
+                                        <PopoverTrigger asChild>
+                                            <Button
+                                                type="button"
+                                                variant="ghost"
+                                                size="icon"
+                                                className="size-6 shrink-0 text-muted-foreground hover:text-foreground"
+                                                onMouseEnter={showInfo}
+                                                onMouseLeave={hideInfo}
+                                                onFocus={showInfo}
+                                                onBlur={hideInfo}
+                                                onClick={toggleInfo}
+                                                aria-label="Show XO game AI information"
+                                                tabIndex={isOpen ? 0 : -1}
+                                            >
+                                                <span className="icon-[tabler--info-circle] size-4" aria-hidden="true" />
+                                            </Button>
+                                        </PopoverTrigger>
+                                        <PopoverContent
+                                            align="start"
+                                            side="bottom"
+                                            sideOffset={6}
+                                            className="w-56 p-3 text-sm leading-relaxed"
+                                        >
+                                            You are playing against the most sophisticated AI agent ever created.
+                                        </PopoverContent>
+                                    </Popover>
+                                </div>
                                 <p className="text-lg font-bold text-primary sm:text-2xl">{status}</p>
                             </div>
                         ) : (
