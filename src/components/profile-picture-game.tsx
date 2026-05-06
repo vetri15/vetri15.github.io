@@ -32,7 +32,9 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
     const winner = winningLine ? board[winningLine[0]] : null
     const isDraw = !winner && board.every(Boolean)
     const status = winner
-        ? `${winner} won!`
+        ? winner === 'O'
+            ? 'VT - Genesis Won'
+            : `${winner} won!`
         : isDraw
           ? 'Draw game!'
           : currentPlayer === 'X'
