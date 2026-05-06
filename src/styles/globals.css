@@ -639,7 +639,7 @@ pre[class*='language-'] {
 
 .vt-loading-bar {
     transform-origin: left;
-    animation: vt-loading 2s ease-in-out forwards;
+    animation: vt-loading 1s ease-in-out forwards;
 }
 
 .logo-mark {
