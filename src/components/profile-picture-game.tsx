@@ -5,7 +5,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils'
 import { getBestMove, getWinningLine, type BoardCell, type Player } from '@/lib/xo-bot'
 import Image from 'next/image'
-import { type MouseEvent, useEffect, useMemo, useState } from 'react'
+import { type MouseEvent, useEffect, useMemo, useRef, useState } from 'react'
 
 interface ProfilePictureGameProps {
     src: string
@@ -23,10 +23,12 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
     const [isOpen, setIsOpen] = useState(false)
     const [isInfoOpen, setIsInfoOpen] = useState(false)
     const [isInfoPinned, setIsInfoPinned] = useState(false)
+    const [isClickHintVisible, setIsClickHintVisible] = useState(false)
     const [phase, setPhase] = useState<GamePhase>('flipping')
     const [board, setBoard] = useState<BoardCell[]>(createEmptyBoard)
     const [currentPlayer, setCurrentPlayer] = useState<Player>('X')
     const [lastMove, setLastMove] = useState<number | null>(null)
+    const clickHintTimer = useRef<number | null>(null)
 
     const winningLine = useMemo(() => getWinningLine(board), [board])
     const winner = winningLine ? board[winningLine[0]] : null
@@ -97,6 +99,35 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
         return () => window.clearTimeout(botTimer)
     }, [currentPlayer, isDraw, isOpen, phase, winner])
 
+    useEffect(() => {
+        return () => {
+            if (clickHintTimer.current !== null) {
+                window.clearTimeout(clickHintTimer.current)
+            }
+        }
+    }, [])
+
+    const clearClickHintTimer = () => {
+        if (clickHintTimer.current !== null) {
+            window.clearTimeout(clickHintTimer.current)
+            clickHintTimer.current = null
+        }
+    }
+
+    const showClickHintAfterDelay = () => {
+        clearClickHintTimer()
+
+        clickHintTimer.current = window.setTimeout(() => {
+            setIsClickHintVisible(true)
+            clickHintTimer.current = null
+        }, 2000)
+    }
+
+    const hideClickHint = () => {
+        clearClickHintTimer()
+        setIsClickHintVisible(false)
+    }
+
     const resetGame = () => {
         setBoard(createEmptyBoard())
         setCurrentPlayer('X')
@@ -104,6 +135,7 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
     }
 
     const openGame = () => {
+        hideClickHint()
         resetGame()
         setPhase('flipping')
         setIsOpen(true)
@@ -183,13 +215,20 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                         isOpen && 'pointer-events-none',
                     )}
                     onClick={openGame}
+                    onMouseEnter={showClickHintAfterDelay}
+                    onMouseLeave={hideClickHint}
                     aria-label="Open XO mini game"
                     aria-hidden={isOpen}
                     tabIndex={isOpen ? -1 : 0}
                 >
                     <Image src={src} alt={alt} width={500} height={500} className="size-full object-cover" priority />
-                    <span className="absolute inset-x-0 bottom-6 mx-auto w-max rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-                        Click me
+                    <span
+                        className={cn(
+                            'absolute inset-x-0 bottom-6 mx-auto w-max rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground opacity-0 shadow-lg transition-opacity duration-200 group-focus-visible:opacity-100',
+                            isClickHintVisible && 'opacity-100',
+                        )}
+                    >
+                        Click for challenge
                     </span>
                 </button>
 
