@@ -29,7 +29,7 @@ const HomePage = () => {
                                         <span className="title-highlight title-highlight-primary">Vetri T</span>
                                     </Typography>
                                 </div>
-                                <p className="supporting-copy max-w-2xl">
+                                <p className="supporting-copy max-w-2xl text-lg">
                                     Backend Developer specializing in Java and Spring Boot, building scalable REST APIs,
                                     Microservices, and backend systems for complex business flows. Focused on clean
                                     architecture, performance, maintainability, and production-ready solutions.
