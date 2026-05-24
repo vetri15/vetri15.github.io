@@ -1,14 +1,37 @@
 import FadeInSection from '@/components/fade-in-section'
 import { Layout } from '@/components/layout'
 import { LinkDock } from '@/components/link-dock'
-import { ProfilePictureGame } from '@/components/profile-picture-game'
 import { AboutPrimaryContent, AboutSecondaryContent } from '@/components/sections/about'
 import { Contact } from '@/components/sections/contact'
 import { FeaturedProjectsGrid } from '@/components/sections/projects'
 import { Typography } from '@/components/typography'
 import { Button } from '@/components/ui/button'
 import { appendBaseUrl } from '@/utils/imagePath'
+import Image from 'next/image'
 import NextLink from 'next/link'
+
+const recruiterSnapshot = [
+    {
+        label: 'Primary stack',
+        value: 'Java, Spring Boot',
+    },
+    {
+        label: 'Focus',
+        value: 'REST APIs & Microservices',
+    },
+    {
+        label: 'Domain',
+        value: 'CRM workflows',
+    },
+    {
+        label: 'Experience',
+        value: '1.5+ years',
+    },
+    {
+        label: 'Seeking',
+        value: 'Backend Developer roles',
+    },
+]
 
 const HomePage = () => {
     const profileImg = appendBaseUrl('/images/profile.webp')
@@ -35,6 +58,7 @@ const HomePage = () => {
                                     architecture, performance, maintainability, and production-ready solutions.
                                     Exploring cloud, DevOps, and AI-driven backend development.
                                 </p>
+
                                 <div className="flex space-x-4">
                                     <NextLink href="/projects">
                                         <Button className="text-primary-foreground" aria-label="View Projects">
@@ -48,9 +72,30 @@ const HomePage = () => {
                                         </Button>
                                     </NextLink>
                                 </div>
+                                <div className="w-full max-w-2xl rounded-lg border bg-card/50 px-4 py-3 text-left shadow-sm">
+                                    <p className="text-sm font-semibold text-foreground">Recruiter snapshot</p>
+                                    <dl className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                                        {recruiterSnapshot.map((item) => (
+                                            <div key={item.label} className="flex items-baseline gap-1.5">
+                                                <dt className="text-xs font-semibold uppercase text-muted-foreground">
+                                                    {item.label}
+                                                    <span className="sr-only">:</span>
+                                                </dt>
+                                                <dd className="font-medium text-foreground">{item.value}</dd>
+                                            </div>
+                                        ))}
+                                    </dl>
+                                </div>
                             </div>
                             <div className="flex w-full justify-center lg:justify-center">
-                                <ProfilePictureGame src={profileImg} alt="Profile" enabled={false} />
+                                <Image
+                                    src={profileImg}
+                                    alt="Profile"
+                                    width={500}
+                                    height={500}
+                                    className="size-[300px] rounded-xl md:size-[450px] lg:size-[500px]"
+                                    priority
+                                />
                             </div>
                         </section>
                     </FadeInSection>
