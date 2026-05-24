@@ -1,8 +1,8 @@
+import { ProfilePictureGame } from '@/components/profile-picture-game'
 import { Typography } from '@/components/typography'
 import { VerticalMarquee } from '@/components/vertical-marquee'
 import { contact } from '@/data'
 import { appendBaseUrl } from '@/utils/imagePath'
-import Image from 'next/image'
 import FadeInSection from '../fade-in-section'
 
 interface ContactProps {
@@ -14,7 +14,9 @@ export const Contact = ({ id }: ContactProps) => {
         <section id={id} className="flex flex-col space-y-8 pb-20 pt-4">
             <div className="flex justify-center">
                 <Typography className="title-highlight" variant="h2" underline>
-                    <span className="title-highlight-emoji" aria-hidden="true">📫</span>
+                    <span className="title-highlight-emoji" aria-hidden="true">
+                        📫
+                    </span>
                     Let&apos;s Connect
                 </Typography>
             </div>
@@ -23,13 +25,11 @@ export const Contact = ({ id }: ContactProps) => {
                     Feel free to contact me if you have any questions or just want to say hi!
                 </p>
                 <div className="flex flex-col items-center space-y-4">
-                    <Image
-                        src={appendBaseUrl("/images/profile.webp")}
+                    <ProfilePictureGame
+                        src={appendBaseUrl('/images/profile.webp')}
                         alt="Profile"
-                        width={400}
-                        height={400}
-                        className="size-[300px] rounded-full md:size-[400px]"
-                        priority
+                        className="md:size-[400px] lg:size-[400px]"
+                        frontClassName="rounded-full"
                     />
                     <div className="flex space-x-4">
                         {contact.map((item) => (
@@ -49,7 +49,7 @@ export const Contact = ({ id }: ContactProps) => {
                 </div>
             </div>
             <FadeInSection>
-            <VerticalMarquee />
+                <VerticalMarquee />
             </FadeInSection>
         </section>
     )

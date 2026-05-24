@@ -5,8 +5,8 @@ export const contact = [
         link: 'https://x.com/Vetri_TQ',
     },
     {
-        icon: 'icon-[tabler--brand-discord-filled]',
-        label: 'Discord',
-        link: 'https://discord.com/users/793510193869619231',
+        icon: 'icon-[simple-icons--linkedin]',
+        label: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/vetrivelthuran/',
     },
 ]

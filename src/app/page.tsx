@@ -50,7 +50,7 @@ const HomePage = () => {
                                 </div>
                             </div>
                             <div className="flex w-full justify-center lg:justify-center">
-                                <ProfilePictureGame src={profileImg} alt="Profile" enabled={true} />
+                                <ProfilePictureGame src={profileImg} alt="Profile" enabled={false} />
                             </div>
                         </section>
                     </FadeInSection>

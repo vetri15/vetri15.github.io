@@ -5,12 +5,14 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils'
 import { getBestMove, getWinningLine, type BoardCell, type Player } from '@/lib/xo-bot'
 import Image from 'next/image'
-import { type MouseEvent, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from 'react'
 
 interface ProfilePictureGameProps {
     src: string
     alt: string
     enabled?: boolean
+    className?: string
+    frontClassName?: string
 }
 
 type GamePhase = 'flipping' | 'loading' | 'game'
@@ -19,7 +21,13 @@ const createEmptyBoard = (): BoardCell[] => Array<BoardCell>(9).fill(null)
 const flipDuration = 500
 const loadingDuration = 2000
 
-export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureGameProps) => {
+export const ProfilePictureGame = ({
+    src,
+    alt,
+    enabled = true,
+    className,
+    frontClassName = 'rounded-xl',
+}: ProfilePictureGameProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const [isInfoOpen, setIsInfoOpen] = useState(false)
     const [isInfoPinned, setIsInfoPinned] = useState(false)
@@ -194,14 +202,14 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                 alt={alt}
                 width={500}
                 height={500}
-                className="size-[300px] rounded-xl md:size-[450px] lg:size-[500px]"
+                className={cn('size-[300px] object-cover md:size-[450px] lg:size-[500px]', frontClassName)}
                 priority
             />
         )
     }
 
     return (
-        <div className="size-[300px] [perspective:1200px] md:size-[450px] lg:size-[500px]">
+        <div className={cn('size-[300px] [perspective:1200px] md:size-[450px] lg:size-[500px]', className)}>
             <div
                 className={cn(
                     'relative size-full transition-transform duration-500 [transform-style:preserve-3d] motion-reduce:transition-none',
@@ -211,7 +219,8 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                 <button
                     type="button"
                     className={cn(
-                        'group absolute inset-0 overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [backface-visibility:hidden]',
+                        'group absolute inset-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [backface-visibility:hidden]',
+                        frontClassName,
                         isOpen && 'pointer-events-none',
                     )}
                     onClick={openGame}
@@ -268,7 +277,10 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                                                 aria-label="Show XO game AI information"
                                                 tabIndex={isOpen ? 0 : -1}
                                             >
-                                                <span className="icon-[tabler--info-circle] size-4" aria-hidden="true" />
+                                                <span
+                                                    className="icon-[tabler--info-circle] size-4"
+                                                    aria-hidden="true"
+                                                />
                                             </Button>
                                         </PopoverTrigger>
                                         <PopoverContent
@@ -277,7 +289,8 @@ export const ProfilePictureGame = ({ src, alt, enabled = true }: ProfilePictureG
                                             sideOffset={6}
                                             className="w-56 p-3 text-sm leading-relaxed"
                                         >
-                                            You are facing an advanced AI agent powered by quantum computing, high-speed neural reasoning, and inscrutable intelligence beyond human comprehension.
+                                            You are facing an advanced AI agent powered by quantum computing, high-speed
+                                            neural reasoning, and inscrutable intelligence beyond human comprehension.
                                         </PopoverContent>
                                     </Popover>
                                 </div>

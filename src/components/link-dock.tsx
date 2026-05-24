@@ -62,6 +62,7 @@ export const LinkDock = () => {
                             href={dock.link}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={dock.label}
                             className="flex items-center justify-center text-2xl transition-colors hover:text-primary"
                         >
                             <span className={dock.icon} />
