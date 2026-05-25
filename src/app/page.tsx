@@ -1,6 +1,7 @@
 import FadeInSection from '@/components/fade-in-section'
 import { Layout } from '@/components/layout'
 import { LinkDock } from '@/components/link-dock'
+import { RecruiterSnapshot } from '@/components/recruiter-snapshot'
 import { AboutPrimaryContent, AboutSecondaryContent } from '@/components/sections/about'
 import { Contact } from '@/components/sections/contact'
 import { FeaturedProjectsGrid } from '@/components/sections/projects'
@@ -25,7 +26,7 @@ const recruiterSnapshot = [
     },
     {
         label: 'Experience',
-        value: '1.5+ years',
+        value: '1.6+ years',
     },
     {
         label: 'Seeking',
@@ -38,10 +39,10 @@ const HomePage = () => {
 
     return (
         <Layout mainClassName="w-full max-w-[96rem] space-y-10 px-4 sm:px-6 lg:px-6 xl:px-8">
-            <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-10">
+            <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2 lg:gap-10">
                 <div className="lg:col-span-2">
                     <FadeInSection>
-                        <section className="flex flex-col-reverse items-center gap-8 py-12 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10">
+                        <section className="flex flex-col-reverse items-center gap-8 pb-6 pt-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-12">
                             <div className="flex max-w-3xl flex-col items-center space-y-6 text-center lg:max-w-none lg:items-start lg:text-left">
                                 <div className="flex items-baseline space-x-1 space-y-6 lg:flex-col lg:space-x-0">
                                     <Typography
@@ -53,10 +54,7 @@ const HomePage = () => {
                                     </Typography>
                                 </div>
                                 <p className="supporting-copy max-w-2xl text-lg">
-                                    Backend Developer specializing in Java and Spring Boot, building scalable REST APIs,
-                                    Microservices, and backend systems for complex business flows. Focused on clean
-                                    architecture, performance, maintainability, and production-ready solutions.
-                                    Exploring cloud, DevOps, and AI-driven backend development.
+                                    Backend Developer with experience in Java and Spring Boot, building scalable REST APIs, microservices, and backend systems for complex business flows. Experienced in clean architecture, performance optimization, maintainability, and production-ready solutions. Actively exploring cloud, DevOps, and AI-driven backend development to build more scalable and intelligent backend systems.
                                 </p>
 
                                 <div className="flex space-x-4">
@@ -72,20 +70,7 @@ const HomePage = () => {
                                         </Button>
                                     </NextLink>
                                 </div>
-                                <div className="w-full max-w-2xl rounded-lg border bg-card/50 px-4 py-3 text-left shadow-sm">
-                                    <p className="text-sm font-semibold text-foreground">Recruiter snapshot</p>
-                                    <dl className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-                                        {recruiterSnapshot.map((item) => (
-                                            <div key={item.label} className="flex items-baseline gap-1.5">
-                                                <dt className="text-xs font-semibold uppercase text-muted-foreground">
-                                                    {item.label}
-                                                    <span className="sr-only">:</span>
-                                                </dt>
-                                                <dd className="font-medium text-foreground">{item.value}</dd>
-                                            </div>
-                                        ))}
-                                    </dl>
-                                </div>
+                                <RecruiterSnapshot items={recruiterSnapshot} />
                             </div>
                             <div className="flex w-full justify-center lg:justify-center">
                                 <Image
@@ -100,7 +85,7 @@ const HomePage = () => {
                         </section>
                     </FadeInSection>
                 </div>
-                <section id="about" className="py-4">
+                <section id="about" className="pb-4 pt-0 lg:py-4">
                     <AboutPrimaryContent alignTitle="start" />
                 </section>
                 <section className="py-4 lg:h-full">
