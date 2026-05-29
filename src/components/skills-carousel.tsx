@@ -1,5 +1,6 @@
 'use client'
 
+import { BrandLogo } from '@/components/brand-logo'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { skills } from '@/data'
@@ -79,7 +80,7 @@ export const SkillsCarousel = () => {
                                     <CardFooter className="mt-auto">
                                         <div className="flex flex-wrap gap-2">
                                             {skill.items.map((item) => (
-                                                <span key={item.name} className={`${item.icon} size-6`} />
+                                                <BrandLogo key={item.name} icon={item.icon} className="size-6" />
                                             ))}
                                         </div>
                                     </CardFooter>

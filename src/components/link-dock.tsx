@@ -1,5 +1,6 @@
 'use client'
 
+import { BrandLogo } from '@/components/brand-logo'
 import { dock as docks } from '@/data/dock'
 import React from 'react'
 
@@ -65,7 +66,7 @@ export const LinkDock = () => {
                             aria-label={dock.label}
                             className="flex items-center justify-center text-2xl transition-colors hover:text-primary"
                         >
-                            <span className={dock.icon} />
+                            <BrandLogo icon={dock.icon} />
                         </a>
                     ))}
                 </div>

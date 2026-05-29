@@ -1,3 +1,4 @@
+import { ContactLinksPopover } from '@/components/contact-links-popover'
 import FadeInSection from '@/components/fade-in-section'
 import { Layout } from '@/components/layout'
 import { LinkDock } from '@/components/link-dock'
@@ -54,21 +55,20 @@ const HomePage = () => {
                                     </Typography>
                                 </div>
                                 <p className="supporting-copy max-w-2xl text-lg">
-                                    Backend Developer with experience in Java and Spring Boot, building scalable REST APIs, microservices, and backend systems for complex business flows. Experienced in clean architecture, performance optimization, maintainability, and production-ready solutions. Actively exploring cloud, DevOps, and AI-driven backend development to build more scalable and intelligent backend systems.
+                                    Backend Developer with experience in Java and Spring Boot, building scalable REST
+                                    APIs, microservices, and backend systems for complex business flows. Experienced in
+                                    clean architecture, performance optimization, maintainability, and production-ready
+                                    solutions. Actively exploring cloud, DevOps, and AI-driven backend development to
+                                    build more scalable and intelligent backend systems.
                                 </p>
 
-                                <div className="flex space-x-4">
+                                <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
                                     <NextLink href="/projects">
                                         <Button className="text-primary-foreground" aria-label="View Projects">
                                             View Projects
                                         </Button>
                                     </NextLink>
-                                    <NextLink href="/contact">
-                                        <Button variant="outline" className="gap-2" aria-label="Contact Me">
-                                            Contact Me
-                                            <span className="icon-[tabler--mail-fast] size-6" />
-                                        </Button>
-                                    </NextLink>
+                                    <ContactLinksPopover />
                                 </div>
                                 <RecruiterSnapshot items={recruiterSnapshot} />
                             </div>

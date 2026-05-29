@@ -1,3 +1,4 @@
+import { BrandLogo } from '@/components/brand-logo'
 import { contact } from '@/data'
 import NextLink from 'next/link'
 
@@ -20,7 +21,7 @@ export const Footer = () => {
                             rel="noopener noreferrer"
                             aria-label={item.label}
                         >
-                            <span className={`${item.icon} size-6`} />
+                            <BrandLogo icon={item.icon} className="size-6" />
                         </NextLink>
                     ))}
                 </div>

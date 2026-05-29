@@ -1,3 +1,4 @@
+import { BrandLogo } from '@/components/brand-logo'
 import { SkillsCarousel } from '@/components/skills-carousel'
 import { Typography } from '@/components/typography'
 import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -23,7 +24,9 @@ const AboutTitle = ({ alignTitle = 'center' }: AboutPrimaryContentProps) => {
         <FadeInSection>
             <div className={alignTitle === 'start' ? 'flex justify-center lg:justify-start' : 'flex justify-center'}>
                 <Typography className="title-highlight" variant="h1" underline>
-                    <span className="title-highlight-emoji" aria-hidden="true">{'\u{1F4DD}'}</span>
+                    <span className="title-highlight-emoji" aria-hidden="true">
+                        {'\u{1F4DD}'}
+                    </span>
                     About Me
                 </Typography>
             </div>
@@ -60,7 +63,9 @@ export const AboutPrimaryContent = ({ alignTitle = 'center' }: AboutPrimaryConte
                 <div className="flex flex-col space-y-6">
                     <Typography variant="h2">Summary</Typography>
                     <p className="text-lg text-muted-foreground">
-                        Spring Boot developer with experience in designing and scaling microservices-based applications. Proficient in Java, Spring ecosystem, and cloud-native development. Focused on delivering high-quality backend solutions that drive business value.
+                        Spring Boot developer with experience in designing and scaling microservices-based applications.
+                        Proficient in Java, Spring ecosystem, and cloud-native development. Focused on delivering
+                        high-quality backend solutions that drive business value.
                     </p>
                 </div>
             </FadeInSection>
@@ -86,7 +91,7 @@ export const AboutSecondaryContent = () => {
                                 </div>
                                 <CardHeader>
                                     <div className="flex flex-wrap justify-center gap-2">
-                                        <span className={`${item.icon} size-6`} />
+                                        <BrandLogo icon={item.icon} className="size-6" />
                                     </div>
                                 </CardHeader>
                                 <CardFooter className="mt-auto justify-center">

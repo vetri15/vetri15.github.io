@@ -1,5 +1,6 @@
 'use client'
 
+import { BrandLogo } from '@/components/brand-logo'
 import { Typography } from '@/components/typography'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -131,7 +132,7 @@ const ProjectCard = ({ project, className, useFullWidthLayout = project.isFullWi
                                 rel="noreferrer"
                                 aria-label={`Open GitHub repository for ${project.title}`}
                             >
-                                <span className="icon-[simple-icons--github] mr-2 size-4" />
+                                <BrandLogo icon="icon-[simple-icons--github]" className="mr-2 size-4" />
                                 GitHub
                             </NextLink>
                         </Button>

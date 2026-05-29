@@ -1,3 +1,4 @@
+import { BrandLogo } from '@/components/brand-logo'
 import { ProfilePictureGame } from '@/components/profile-picture-game'
 import { Typography } from '@/components/typography'
 import { VerticalMarquee } from '@/components/vertical-marquee'
@@ -41,7 +42,7 @@ export const Contact = ({ id }: ContactProps) => {
                                 rel="noopener noreferrer"
                                 aria-label={item.label}
                             >
-                                <span className={`${item.icon} size-6`} />
+                                <BrandLogo icon={item.icon} className="size-6" />
                                 <p className="transition-colors group-hover:underline">{item.label}</p>
                             </a>
                         ))}
