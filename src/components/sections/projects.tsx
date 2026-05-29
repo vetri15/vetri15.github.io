@@ -34,9 +34,6 @@ const ProjectsHeader = ({
     return (
         <div className="flex flex-col items-center gap-3 border-b pb-4 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center">
             <Typography className="title-highlight sm:col-start-2 sm:justify-self-center" variant="h1">
-                <span className="title-highlight-emoji" aria-hidden="true">
-                    {'\u{1F680}'}
-                </span>
                 {featured && 'Featured '}Projects
             </Typography>
             <NextLink

@@ -24,9 +24,6 @@ const AboutTitle = ({ alignTitle = 'center' }: AboutPrimaryContentProps) => {
         <FadeInSection>
             <div className={alignTitle === 'start' ? 'flex justify-center lg:justify-start' : 'flex justify-center'}>
                 <Typography className="title-highlight" variant="h1" underline>
-                    <span className="title-highlight-emoji" aria-hidden="true">
-                        {'\u{1F4DD}'}
-                    </span>
                     About Me
                 </Typography>
             </div>

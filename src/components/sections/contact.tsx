@@ -15,9 +15,6 @@ export const Contact = ({ id }: ContactProps) => {
         <section id={id} className="flex flex-col space-y-8 pb-20 pt-4">
             <div className="flex justify-center">
                 <Typography className="title-highlight" variant="h2" underline>
-                    <span className="title-highlight-emoji" aria-hidden="true">
-                        📫
-                    </span>
                     Let&apos;s Connect
                 </Typography>
             </div>
