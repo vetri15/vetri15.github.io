@@ -1,3 +1,4 @@
+import { AppNotifierProvider } from '@/components/app-notifier'
 import { ThemeProvider } from '@/components/theme-provider'
 import { BASE_URL, OPEN_GRAPH_IMAGE } from '@/config'
 import type { Metadata, Viewport } from 'next'
@@ -86,17 +87,14 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         <html lang="en" suppressHydrationWarning>
             <head>
                 <meta charSet="utf-8" />
-                <meta
-                    name="keywords"
-                    content="Vetri T, Backend Developer, Web Developer, Portfolio, GitHub"
-                />
+                <meta name="keywords" content="Vetri T, Backend Developer, Web Developer, Portfolio, GitHub" />
 
                 {/* lazy loading images */}
                 <script src="https://afarkas.github.io/lazysizes/lazysizes.min.js" async></script>
             </head>
             <body className={spaceGrotesk.className}>
                 <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
-                    {children}
+                    <AppNotifierProvider>{children}</AppNotifierProvider>
                 </ThemeProvider>
             </body>
         </html>
