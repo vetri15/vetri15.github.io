@@ -6,26 +6,30 @@ import { cn } from '@/lib/utils'
 import { LogoItem } from '@/types/logo'
 
 const LogoCard = ({ name, icon, group }: LogoItem) => {
-    const groupGradients: Record<string, string> = {
-        'Front End Development': 'bg-gradient-to-r from-pink-500 via-red-500 to-orange-500',
-        'Backend Development': 'bg-gradient-to-r from-fuchsia-500 via-blue-500 to-emerald-500', // primary
-        'Data Analysis': 'bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-600',
-        'CRM Development': 'bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600',
+    const groupAccentClasses: Record<string, string> = {
+        'Front End Development': 'border-rose-500/20 bg-rose-500/5',
+        'Backend Development': 'border-blue-500/20 bg-blue-500/5',
+        'Data Analysis': 'border-amber-500/20 bg-amber-500/5',
+        'CRM Development': 'border-indigo-500/20 bg-indigo-500/5',
     }
 
-    const gradientClass = groupGradients[group] || ''
+    const accentClass = groupAccentClasses[group] || 'border-border/70 bg-background'
 
     return (
-        <figure className={cn('relative flex items-center justify-center p-[2px] rounded-xl', gradientClass)}>
-            <div className="flex flex-row items-center justify-center w-24 h-24 rounded-xl bg-white dark:bg-zinc-900">
-                <BrandLogo key={name} icon={icon} className="size-8" />
-            </div>
+        <figure
+            aria-label={`${name} logo`}
+            className={cn(
+                'flex size-20 items-center justify-center rounded-lg border shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md sm:size-24',
+                accentClass,
+            )}
+        >
+            <BrandLogo icon={icon} className="size-8 sm:size-9" />
         </figure>
     )
 }
 
 export function VerticalMarquee() {
-    let logos: LogoItem[] = skills.reduce((accum: LogoItem[], i) => {
+    const logos: LogoItem[] = skills.reduce((accum: LogoItem[], i) => {
         const itemsWithTitle: LogoItem[] = i.items.map((item) => ({
             ...item,
             group: i.title, // attach parent title
@@ -34,35 +38,46 @@ export function VerticalMarquee() {
         return accum.concat(itemsWithTitle)
     }, [])
 
-    let logoGroups = splitIntoThree(logos)
+    const logoGroups = splitIntoThree(logos)
 
     return (
-        <div className="relative flex items-center justify-center">
-            {/* Gradient border wrapper */}
-            <div className="relative w-full h-[500px] p-[2px] rounded-2xl bg-gradient-to-r from-pink-500 via-blue-500 to-purple-500">
-                {/* Inner content */}
-                <div className="relative flex h-full w-full flex-row items-center justify-center overflow-hidden gap-2 lg:gap-8 rounded-2xl bg-zinc-100 dark:bg-zinc-900 md:shadow-xl">
-                    <Marquee reverse vertical className="[--duration:10s] items-center justify-center">
+        <div className="relative mx-auto flex w-full max-w-5xl items-center justify-center">
+            <div className="relative w-full overflow-hidden rounded-lg border border-border/70 bg-background/80 p-3 shadow-sm">
+                <div className="relative flex h-[360px] w-full flex-row items-center justify-center gap-3 overflow-hidden rounded-md bg-muted/30 p-2 sm:h-[420px] lg:h-[480px] lg:gap-6">
+                    <Marquee
+                        reverse
+                        vertical
+                        pauseOnHover
+                        className="[--duration:16s] [--gap:0.75rem] items-center justify-center"
+                    >
                         {logoGroups[0].map((logo, i) => (
                             <LogoCard key={i} {...logo} />
                         ))}
                     </Marquee>
 
-                    <Marquee vertical className="[--duration:10s] items-center justify-center">
+                    <Marquee
+                        vertical
+                        pauseOnHover
+                        className="[--duration:18s] [--gap:0.75rem] items-center justify-center"
+                    >
                         {logoGroups[1].map((logo, i) => (
                             <LogoCard key={i} {...logo} />
                         ))}
                     </Marquee>
 
-                    <Marquee reverse vertical className="[--duration:10s] items-center justify-center">
+                    <Marquee
+                        reverse
+                        vertical
+                        pauseOnHover
+                        className="[--duration:16s] [--gap:0.75rem] items-center justify-center"
+                    >
                         {logoGroups[2].map((logo, i) => (
                             <LogoCard key={i} {...logo} />
                         ))}
                     </Marquee>
 
-                    {/* Top + bottom fade masks MUST match the rounding */}
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 rounded-t-2xl bg-gradient-to-b from-zinc-200/90 dark:from-zinc-800/90"></div>
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 rounded-b-2xl bg-gradient-to-t from-zinc-200/90 dark:from-zinc-800/90"></div>
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-24 rounded-t-md bg-gradient-to-b from-background via-background/80 to-transparent dark:from-background" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 rounded-b-md bg-gradient-to-t from-background via-background/80 to-transparent dark:from-background" />
                 </div>
             </div>
         </div>
