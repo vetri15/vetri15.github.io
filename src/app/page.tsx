@@ -2,14 +2,15 @@ import { ContactLinksPopover } from '@/components/contact-links-popover'
 import FadeInSection from '@/components/fade-in-section'
 import { Layout } from '@/components/layout'
 import { LinkDock } from '@/components/link-dock'
+import { LinkedinQrFlipCard } from '@/components/linkedin-qr-flip-card'
 import { RecruiterSnapshot } from '@/components/recruiter-snapshot'
 import { AboutPrimaryContent, AboutSecondaryContent } from '@/components/sections/about'
 import { Contact } from '@/components/sections/contact'
 import { FeaturedProjectsGrid } from '@/components/sections/projects'
 import { Typography } from '@/components/typography'
 import { Button } from '@/components/ui/button'
+import { connectLinks } from '@/data'
 import { appendBaseUrl } from '@/utils/imagePath'
-import Image from 'next/image'
 import NextLink from 'next/link'
 
 const recruiterSnapshot = [
@@ -37,6 +38,7 @@ const recruiterSnapshot = [
 
 const HomePage = () => {
     const profileImg = appendBaseUrl('/images/profile.webp')
+    const linkedinUrl = connectLinks.find((item) => item.label === 'LinkedIn')?.link ?? 'https://www.linkedin.com/'
 
     return (
         <Layout mainClassName="w-full max-w-[96rem] space-y-10 px-4 sm:px-6 lg:px-6 xl:px-8">
@@ -73,13 +75,11 @@ const HomePage = () => {
                                 <RecruiterSnapshot items={recruiterSnapshot} />
                             </div>
                             <div className="flex w-full justify-center lg:justify-center">
-                                <Image
-                                    src={profileImg}
-                                    alt="Profile"
-                                    width={500}
-                                    height={500}
-                                    className="size-[300px] rounded-xl md:size-[450px] lg:size-[500px]"
-                                    priority
+                                <LinkedinQrFlipCard
+                                    profileImageSrc={profileImg}
+                                    linkedinUrl={linkedinUrl}
+                                    className="size-[300px] md:size-[450px] lg:size-[500px]"
+                                    showFlipHint={false}
                                 />
                             </div>
                         </section>

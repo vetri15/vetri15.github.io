@@ -10,9 +10,15 @@ interface LinkedinQrFlipCardProps {
     profileImageSrc: string
     linkedinUrl: string
     className?: string
+    showFlipHint?: boolean
 }
 
-export const LinkedinQrFlipCard = ({ profileImageSrc, linkedinUrl, className }: LinkedinQrFlipCardProps) => {
+export const LinkedinQrFlipCard = ({
+    profileImageSrc,
+    linkedinUrl,
+    className,
+    showFlipHint = true,
+}: LinkedinQrFlipCardProps) => {
     const [isFlipped, setIsFlipped] = useState(false)
 
     return (
@@ -39,9 +45,11 @@ export const LinkedinQrFlipCard = ({ profileImageSrc, linkedinUrl, className }: 
                         className="size-full object-cover"
                         priority
                     />
-                    <span className="absolute inset-x-6 bottom-6 rounded-md bg-background/90 px-3 py-2 text-sm font-medium text-foreground opacity-0 shadow-sm backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-                        Show LinkedIn QR
-                    </span>
+                    {showFlipHint && (
+                        <span className="absolute inset-x-6 bottom-6 rounded-md bg-background/90 px-3 py-2 text-sm font-medium text-foreground opacity-0 shadow-sm backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                            Show LinkedIn QR
+                        </span>
+                    )}
                 </button>
 
                 <div
