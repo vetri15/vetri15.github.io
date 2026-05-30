@@ -1,5 +1,5 @@
 import { BrandLogo } from '@/components/brand-logo'
-import { ProfilePictureGame } from '@/components/profile-picture-game'
+import { LinkedinQrFlipCard } from '@/components/linkedin-qr-flip-card'
 import { Typography } from '@/components/typography'
 import { VerticalMarquee } from '@/components/vertical-marquee'
 import { connectLinks } from '@/data'
@@ -11,6 +11,8 @@ interface ContactProps {
 }
 
 export const Contact = ({ id }: ContactProps) => {
+    const linkedinUrl = connectLinks.find((item) => item.label === 'LinkedIn')?.link ?? 'https://www.linkedin.com/'
+
     return (
         <section id={id} className="flex flex-col gap-10 pb-20 pt-6">
             <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
@@ -24,11 +26,10 @@ export const Contact = ({ id }: ContactProps) => {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
                 <div className="flex justify-center lg:justify-end">
                     <div className="rounded-2xl border border-border/70 bg-muted/20 p-2 shadow-sm">
-                        <ProfilePictureGame
-                            src={appendBaseUrl('/images/profile.webp')}
-                            alt="Profile"
-                            className="size-[260px] sm:size-[320px] md:size-[360px] lg:size-[360px]"
-                            frontClassName="rounded-full"
+                        <LinkedinQrFlipCard
+                            profileImageSrc={appendBaseUrl('/images/profile.webp')}
+                            linkedinUrl={linkedinUrl}
+                            className="lg:size-[360px]"
                         />
                     </div>
                 </div>
