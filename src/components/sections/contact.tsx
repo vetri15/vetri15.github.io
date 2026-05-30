@@ -25,12 +25,14 @@ export const Contact = ({ id }: ContactProps) => {
             </div>
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
                 <div className="flex justify-center lg:justify-end">
-                    <div className="rounded-2xl border border-border/70 bg-muted/20 p-2 shadow-sm">
-                        <LinkedinQrFlipCard
-                            profileImageSrc={appendBaseUrl('/images/profile.webp')}
-                            linkedinUrl={linkedinUrl}
-                            className="lg:size-[360px]"
-                        />
+                    <div className="animate-shimmer rounded-2xl bg-[linear-gradient(115deg,hsl(var(--border)),hsl(var(--primary)/0.65),hsl(var(--border)),hsl(var(--foreground)/0.24),hsl(var(--primary)/0.45),hsl(var(--border)))] p-[2px] shadow-sm">
+                        <div className="rounded-2xl bg-background p-2">
+                            <LinkedinQrFlipCard
+                                profileImageSrc={appendBaseUrl('/images/profile.webp')}
+                                linkedinUrl={linkedinUrl}
+                                className="lg:size-[360px]"
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className="mx-auto flex w-full max-w-xl flex-col gap-5 lg:mx-0">

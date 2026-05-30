@@ -25,7 +25,7 @@ export const LinkedinQrFlipCard = ({ profileImageSrc, linkedinUrl, className }: 
             >
                 <button
                     type="button"
-                    className="group absolute inset-0 overflow-hidden rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [backface-visibility:hidden]"
+                    className="group absolute inset-0 overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background [backface-visibility:hidden]"
                     onClick={() => setIsFlipped(true)}
                     aria-label="Show LinkedIn QR code"
                     aria-hidden={isFlipped}
