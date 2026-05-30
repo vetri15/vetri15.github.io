@@ -2,7 +2,6 @@ export interface Project {
     title: string
     description: string
     image: string
-    note?: string
     techStack: string[]
     githubUrl: string
     liveDemoUrl?: string
@@ -18,8 +17,7 @@ export const projects = [
         description:
             'Designed a local RAG workflow that turns YouTube transcripts into searchable context and answers questions with an Ollama-powered LLM.',
         image: '/images/projects/youtube-llm.png',
-        note: 'AI',
-        techStack: ['JavaScript', 'LangChain', 'Pinecone', 'Ollama', 'LLM', 'Vector Search'],
+        techStack: ['AI', 'JavaScript', 'LangChain', 'Pinecone', 'Ollama', 'LLM', 'Vector Search'],
         githubUrl: 'https://github.com/vetri15/langchain_demo',
         keyFeatures: [
             'Fetches YouTube transcripts and chunks long-form content for retrieval.',
@@ -38,8 +36,7 @@ export const projects = [
         description:
             'Built a decentralized creator-support app that connects a Next.js interface to Solidity smart contracts for transparent crypto donations.',
         image: '/images/projects/buy-me-coffee.png',
-        note: 'Blockchain',
-        techStack: ['Next.js', 'Solidity', 'Hardhat', 'Ethers.js', 'Web3', 'Smart Contracts'],
+        techStack: ['Blockchain', 'Next.js', 'Solidity', 'Hardhat', 'Ethers.js', 'Web3', 'Smart Contracts'],
         githubUrl: 'https://github.com/vetri15/buy-me-coffee',
         keyFeatures: [
             'Connects wallet-based users to creator donation flows.',

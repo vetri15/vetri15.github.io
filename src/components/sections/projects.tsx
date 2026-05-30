@@ -74,79 +74,89 @@ const ProjectDetailList = ({ title, items, iconClassName = 'icon-[tabler--circle
     )
 }
 
-const ProjectCard = ({ project, className, useFullWidthLayout = project.isFullWidth ?? false }: ProjectCardProps) => {
+const ProjectCard = ({ project, className, useFullWidthLayout = true }: ProjectCardProps) => {
     return (
         <Card className={cn('overflow-hidden', className)}>
-            <div className={cn('flex h-full flex-col justify-between', useFullWidthLayout && 'md:flex-row')}>
-                <div className={cn('flex flex-1 flex-col', useFullWidthLayout && 'md:basis-3/5')}>
-                    <CardHeader className="flex flex-row items-center justify-between gap-3">
-                        <CardTitle>{project.title}</CardTitle>
-                        {project.note && (
-                            <Badge variant="secondary" className="rounded-full">
-                                {project.note}
-                            </Badge>
-                        )}
-                    </CardHeader>
-                    <CardContent className="flex flex-1 flex-col gap-5">
-                        <CardDescription className="leading-relaxed">{project.description}</CardDescription>
-                        <div className="space-y-2">
-                            <h4 className="text-sm font-semibold text-foreground">Tech stack</h4>
-                            <div className="flex flex-wrap gap-2">
-                                {project.techStack.map((technology) => (
-                                    <Badge key={technology} variant="outline" className="rounded-full">
-                                        {technology}
-                                    </Badge>
-                                ))}
+            <div className="flex h-full flex-col">
+                <CardHeader
+                    className={cn(
+                        'space-y-0',
+                        useFullWidthLayout && 'lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-6',
+                    )}
+                >
+                    <CardTitle className="min-w-0">{project.title}</CardTitle>
+                    <div className="hidden lg:block" aria-hidden="true" />
+                </CardHeader>
+                <div
+                    className={cn(
+                        'flex flex-col',
+                        useFullWidthLayout && 'lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start',
+                    )}
+                >
+                    <div className="flex min-w-0 flex-col">
+                        <CardContent className="flex flex-1 flex-col gap-5">
+                            <CardDescription className="leading-relaxed">{project.description}</CardDescription>
+                            <div className="space-y-2">
+                                <h4 className="text-sm font-semibold text-foreground">Tech stack</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {project.techStack.map((technology) => (
+                                        <Badge key={technology} variant="outline" className="rounded-full">
+                                            {technology}
+                                        </Badge>
+                                    ))}
+                                </div>
+                            </div>
+                        </CardContent>
+                    </div>
+                    <div className={cn('min-w-0 px-6', useFullWidthLayout ? 'pb-6 lg:pl-0 lg:pt-0' : 'pb-6')}>
+                        <div className="flex aspect-[16/10] max-h-72 min-h-44 items-center justify-center rounded-md bg-secondary/40 p-4 lg:min-h-0">
+                            <div className="relative h-full max-h-60 w-full">
+                                <Image
+                                    src={appendBaseUrl(project.image)}
+                                    alt={project.title}
+                                    fill
+                                    sizes="(min-width: 1024px) 50vw, 100vw"
+                                    className="object-contain"
+                                    priority
+                                />
                             </div>
                         </div>
-                        <div className="grid gap-5 lg:grid-cols-2">
-                            <ProjectDetailList title="Key features" items={project.keyFeatures} />
-                            <ProjectDetailList
-                                title="Impact"
-                                items={project.impact}
-                                iconClassName="icon-[tabler--chart-line]"
-                            />
-                        </div>
-                    </CardContent>
-                    <CardFooter className="flex flex-wrap gap-2">
-                        {project.liveDemoUrl && (
-                            <Button asChild size="sm">
-                                <NextLink
-                                    href={project.liveDemoUrl}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    aria-label={`Open live demo for ${project.title}`}
-                                >
-                                    <span className="icon-[tabler--external-link] mr-2 size-4" />
-                                    Live Demo
-                                </NextLink>
-                            </Button>
-                        )}
-                        <Button asChild size="sm" variant="outline">
-                            <NextLink
-                                href={project.githubUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label={`Open GitHub repository for ${project.title}`}
-                            >
-                                <BrandLogo icon="icon-[simple-icons--github]" className="mr-2 size-4" />
-                                GitHub
-                            </NextLink>
-                        </Button>
-                    </CardFooter>
-                </div>
-                <div className={cn('px-6', useFullWidthLayout ? 'pb-6 md:basis-2/5 md:py-6 md:pl-0' : 'pb-6')}>
-                    <div className="flex aspect-[16/10] h-full min-h-52 items-center justify-center overflow-hidden rounded-md bg-secondary/40 p-3">
-                        <Image
-                            src={appendBaseUrl(project.image)}
-                            alt={project.title}
-                            width={500}
-                            height={500}
-                            className="h-full w-full object-contain"
-                            priority
-                        />
                     </div>
                 </div>
+                <CardContent className="grid gap-5 md:grid-cols-2">
+                    <ProjectDetailList title="Key features" items={project.keyFeatures} />
+                    <ProjectDetailList
+                        title="Impact"
+                        items={project.impact}
+                        iconClassName="icon-[tabler--chart-line]"
+                    />
+                </CardContent>
+                <CardFooter className="mt-auto flex flex-wrap gap-2">
+                    {project.liveDemoUrl && (
+                        <Button asChild size="sm">
+                            <NextLink
+                                href={project.liveDemoUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`Open live demo for ${project.title}`}
+                            >
+                                <span className="icon-[tabler--external-link] mr-2 size-4" />
+                                Live Demo
+                            </NextLink>
+                        </Button>
+                    )}
+                    <Button asChild size="sm" variant="outline">
+                        <NextLink
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`Open GitHub repository for ${project.title}`}
+                        >
+                            <BrandLogo icon="icon-[simple-icons--github]" className="mr-2 size-4" />
+                            GitHub
+                        </NextLink>
+                    </Button>
+                </CardFooter>
             </div>
         </Card>
     )
@@ -191,7 +201,7 @@ export const FeaturedProjectsGrid = ({ id }: { id?: string }) => {
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 {featuredProjects.map((project) => (
                     <FadeInSection key={project.title}>
-                        <ProjectCard project={project} className="h-full" useFullWidthLayout={false} />
+                        <ProjectCard project={project} className="h-full" />
                     </FadeInSection>
                 ))}
             </div>
