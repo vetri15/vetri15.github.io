@@ -1,0 +1,2 @@
+export const VT_LOADING_CYCLE_DURATION = 2000
+export const VT_LOADING_FADE_DURATION = 300

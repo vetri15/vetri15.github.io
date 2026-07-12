@@ -3,6 +3,7 @@ import FadeInSection from '@/components/fade-in-section'
 import { Layout } from '@/components/layout'
 import { LinkDock } from '@/components/link-dock'
 import { LinkedinQrFlipCard } from '@/components/linkedin-qr-flip-card'
+import { TimedLoadingScreen } from '@/components/loading/timed-loading-screen'
 import { RecruiterSnapshot } from '@/components/recruiter-snapshot'
 import { AboutPrimaryContent, AboutSecondaryContent } from '@/components/sections/about'
 import { Contact } from '@/components/sections/contact'
@@ -43,6 +44,7 @@ const HomePage = () => {
     return (
         <Layout mainClassName="w-full max-w-[96rem] space-y-10 px-4 sm:px-6 lg:px-6 xl:px-8">
             <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2 lg:gap-10">
+                <TimedLoadingScreen duration={2000} label="Loading home page" />
                 <div className="lg:col-span-2">
                     <FadeInSection>
                         <section className="flex flex-col-reverse items-center gap-8 pb-6 pt-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-12">

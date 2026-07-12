@@ -1,4 +1,5 @@
 import { AppNotifierProvider } from '@/components/app-notifier'
+import { LoadingScreenProvider } from '@/components/loading'
 import { ThemeProvider } from '@/components/theme-provider'
 import { BASE_URL, OPEN_GRAPH_IMAGE } from '@/config'
 import type { Metadata, Viewport } from 'next'
@@ -94,7 +95,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
             </head>
             <body className={spaceGrotesk.className}>
                 <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
-                    <AppNotifierProvider>{children}</AppNotifierProvider>
+                    <LoadingScreenProvider>
+                        <AppNotifierProvider>{children}</AppNotifierProvider>
+                    </LoadingScreenProvider>
                 </ThemeProvider>
             </body>
         </html>
