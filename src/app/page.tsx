@@ -14,6 +14,8 @@ import { connectLinks } from '@/data'
 import { appendBaseUrl } from '@/utils/imagePath'
 import NextLink from 'next/link'
 
+const showRecruiterSnapshot = false
+
 const recruiterSnapshot = [
     {
         label: 'Primary stack',
@@ -74,7 +76,7 @@ const HomePage = () => {
                                     </NextLink>
                                     <ContactLinksPopover />
                                 </div>
-                                <RecruiterSnapshot items={recruiterSnapshot} />
+                                {showRecruiterSnapshot && <RecruiterSnapshot items={recruiterSnapshot} />}
                             </div>
                             <div className="flex w-full justify-center lg:justify-center">
                                 <LinkedinQrFlipCard
